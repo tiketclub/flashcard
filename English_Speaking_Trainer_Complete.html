@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#1f6feb">
+<title>English Speaking Trainer</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f4f7fb;color:#172033}
+header{background:#1f6feb;color:#fff;padding:18px 16px;position:sticky;top:0;z-index:5}
+header h1{margin:0;font-size:22px}header p{margin:6px 0 0;font-size:13px}
+.container{max-width:760px;margin:auto;padding:16px}.card,.menu{background:#fff;border-radius:18px;padding:18px;margin-bottom:14px;box-shadow:0 3px 14px #00000012}
+.menu{cursor:pointer;border:1px solid #e6ebf2}.menu h2{margin:0 0 7px;font-size:18px}.menu p{margin:0;color:#5c677a;font-size:14px;line-height:1.5}
+.badge{display:inline-block;background:#eaf2ff;color:#1f6feb;border-radius:20px;padding:5px 10px;font-size:12px;font-weight:bold}
+button{border:0;border-radius:12px;padding:12px 16px;font-size:15px;cursor:pointer;background:#1f6feb;color:#fff;margin:4px}
+button.secondary{background:#e9eef6;color:#23324a}.hidden{display:none}.progress{height:9px;background:#e5eaf1;border-radius:10px;overflow:hidden;margin:10px 0}.bar{height:100%;background:#1f6feb;width:0}
+.indo{font-size:25px;line-height:1.45;font-weight:700;text-align:center;padding:30px 10px 20px}.eng{font-size:23px;line-height:1.45;text-align:center;padding:10px;color:#168447;font-weight:700}
+.hint{text-align:center;color:#697386;font-size:13px}.controls{text-align:center;margin-top:12px}.stat{display:flex;justify-content:space-between;color:#5b6575;font-size:13px}
+footer{text-align:center;color:#778195;font-size:12px;padding:18px}
+</style>
+</head>
+<body>
+<header><h1>English Speaking Trainer</h1><p>Latihan berbicara spontan tanpa menerjemahkan dalam kepala</p></header>
+<div class="container">
+<section id="home">
+<div class="card"><span class="badge">MODE LATIHAN</span><h2>Pilih kategori</h2><p>Ucapkan kalimat bahasa Inggris sebelum membuka jawabannya.</p></div>
+<div class="menu" onclick="start('daily')"><h2>🟢 Daily Vocabulary</h2><p>Kosakata dan kalimat percakapan sehari-hari.</p></div>
+<div class="menu" onclick="start('expressions')"><h2>🔵 Natural Expressions</h2><p>Expressions untuk membuat percakapan lebih natural.</p></div>
+<div class="menu" onclick="start('phrasal')"><h2>🟠 Phrasal Verbs</h2><p>Phrasal verbs yang sering digunakan dalam komunikasi.</p></div>
+<div class="menu" onclick="start('meetings')"><h2>🟣 Meetings & Business</h2><p>Bahasa Inggris untuk rapat, diskusi, dan bisnis.</p></div>
+<div class="menu" onclick="start('seminars')"><h2>🔴 Seminars & Presentations</h2><p>Kalimat untuk seminar, presentasi, dan sesi tanya jawab.</p></div>
+<div class="menu" onclick="start('scientific')"><h2>🧪 Scientific Discussion</h2><p>Sentence frames untuk data, argumen, dan diskusi ilmiah.</p></div>
+<div class="menu" onclick="start('random')"><h2>🎯 Random Practice</h2><p>Latihan acak dari semua kategori.</p></div>
+<div class="card"><h2>📊 Progress</h2><div class="stat"><span>Kartu sudah dilihat</span><strong id="seen">0</strong></div><div class="progress"><div class="bar" id="bar"></div></div><button class="secondary" onclick="resetProgress()">Reset progress</button></div>
+</section>
+<section id="practice" class="hidden">
+<div class="card"><div class="stat"><span id="cat"></span><span id="counter"></span></div><div class="progress"><div class="bar" id="pbar"></div></div>
+<div class="indo" id="indo"></div><div class="hint">Coba ucapkan bahasa Inggrisnya terlebih dahulu.</div>
+<div id="answer" class="hidden"><hr><div class="eng" id="eng"></div><div class="hint" id="note"></div><div class="controls"><button onclick="speak()">🔊 Dengarkan</button></div></div>
+<div class="controls"><button onclick="reveal()">👆 Lihat jawaban</button><button class="secondary" onclick="next()">Berikutnya →</button><button class="secondary" onclick="goHome()">← Menu</button></div>
+</div></section></div><footer>English Speaking Trainer • Progress tersimpan di browser perangkat Anda.</footer>
+<script>
+const data={
+daily:[
+["Saya sedang bekerja sekarang.","I am working now."],["Saya biasanya bangun pukul enam pagi.","I usually wake up at six in the morning."],["Apakah Anda sudah makan?","Have you eaten?"],["Saya akan menghubungi Anda nanti.","I will contact you later."],["Saya sedang dalam perjalanan.","I am on my way."],["Tunggu sebentar.","Wait a moment."],["Saya tidak yakin.","I'm not sure."],["Tidak masalah.","No problem."],["Saya setuju.","I agree."],["Saya lupa.","I forgot."],["Apa maksud Anda?","What do you mean?"],["Bisa Anda ulangi?","Could you repeat that?"],["Saya mengerti.","I understand."],["Saya belum tahu.","I don't know yet."],["Mari kita lihat.","Let's see."]],
+expressions:[
+["Saya paham maksud Anda.","I see what you mean."],["Itu masuk akal.","That makes sense."],["Tergantung situasinya.","It depends on the situation."],["Saya mengerti maksud Anda.","I get your point."],["Saya setuju dengan Anda.","I agree with you."],["Saya kurang yakin tentang itu.","I'm not so sure about that."],["Saya akan memikirkannya.","I'll think about it."],["Biar saya cek dulu.","Let me check first."],["Saya akan segera kembali kepada Anda.","I'll get back to you shortly."],["Itu pertanyaan yang bagus.","That's a good question."],["Sejauh yang saya tahu...","As far as I know..."],["Kalau dipikir-pikir...","Come to think of it..."],["Ngomong-ngomong...","By the way..."],["Yang saya maksud adalah...","What I mean is..."],["Mari kita lihat dari sisi lain.","Let's look at it from another perspective."]],
+phrasal:[
+["Kita perlu menyelesaikan masalah ini.","We need to deal with this issue.","deal with = menangani"],["Saya akan mencari tahu jawabannya.","I'll figure out the answer.","figure out = mencari tahu"],["Mari kita bahas laporan ini.","Let's go over this report.","go over = meninjau"],["Dia mengangkat masalah itu dalam rapat.","She brought up the issue in the meeting.","bring up = mengangkat topik"],["Saya akan menindaklanjuti hal ini.","I'll follow up on this.","follow up = menindaklanjuti"],["Mari kita lanjutkan.","Let's carry on.","carry on = melanjutkan"],["Kita harus menunda rapat.","We have to put off the meeting.","put off = menunda"],["Pertemuan itu dibatalkan.","The meeting was called off.","call off = membatalkan"],["Saya akan mencari istilah itu.","I'll look up the term.","look up = mencari informasi"],["Mari kita akhiri rapat.","Let's wrap up the meeting.","wrap up = mengakhiri"]],
+meetings:[
+["Mari kita mulai rapatnya.","Let's get started with the meeting."],["Tujuan rapat hari ini adalah...","The purpose of today's meeting is..."],["Mari kita fokus pada masalah utama.","Let's focus on the main issue."],["Saya ingin mendengar pendapat Anda.","I'd like to hear your opinion."],["Bolehkah saya menambahkan sesuatu?","May I add something?"],["Saya setuju dengan poin tersebut.","I agree with that point."],["Saya melihatnya sedikit berbeda.","I see it slightly differently."],["Bisakah Anda menjelaskan maksudnya?","Could you clarify what you mean?"],["Mari kita kembali ke topik utama.","Let's get back to the main topic."],["Apakah kita sudah sepakat?","Are we all in agreement?"],["Mari kita simpulkan hasil diskusi.","Let's summarize the discussion."],["Siapa yang akan menindaklanjuti hal ini?","Who will follow up on this?"],["Mari kita lanjutkan ke agenda berikutnya.","Let's move on to the next agenda item."],["Sebelum kita akhiri, ada hal lain?","Before we wrap up, is there anything else?"],["Terima kasih atas kontribusinya.","Thank you for your contribution."]],
+seminars:[
+["Selamat pagi, hadirin sekalian.","Good morning, everyone."],["Hari ini saya akan mempresentasikan penelitian kami.","Today I will present our research."],["Penelitian ini berfokus pada...","This study focuses on..."],["Mari kita mulai dengan latar belakang penelitian.","Let's start with the background of the study."],["Seperti yang dapat Anda lihat pada gambar ini...","As you can see in this figure..."],["Hasil ini menunjukkan bahwa...","These results show that..."],["Temuan utama penelitian ini adalah...","The main finding of this study is..."],["Hasil ini konsisten dengan penelitian sebelumnya.","This result is consistent with previous studies."],["Salah satu kemungkinan penjelasannya adalah...","One possible explanation is..."],["Ada beberapa keterbatasan dalam penelitian ini.","There are several limitations to this study."],["Sebagai kesimpulan...","In conclusion..."],["Sekian presentasi saya. Terima kasih.","That concludes my presentation. Thank you."],["Terima kasih atas pertanyaannya.","Thank you for the question."],["Itu poin yang menarik.","That's an interesting point."],["Saya tidak memiliki data yang cukup untuk menjawabnya secara pasti.","I don't have enough data to answer that definitively."]],
+scientific:[
+["Data menunjukkan adanya peningkatan aktivitas enzim.","The data indicate an increase in enzyme activity."],["Hasil ini menunjukkan bahwa perlakuan tersebut efektif.","These results suggest that the treatment was effective."],["Berdasarkan data yang kami peroleh...","Based on the data we obtained..."],["Jika kita melihat datanya secara keseluruhan...","If we look at the data as a whole..."],["Perbedaan ini signifikan secara statistik.","This difference is statistically significant."],["Namun, kita perlu berhati-hati dalam menafsirkan hasil ini.","However, we need to be cautious in interpreting this result."],["Salah satu kemungkinan penjelasan adalah...","One possible explanation is..."],["Temuan ini mendukung hipotesis kami.","This finding supports our hypothesis."],["Temuan ini tidak sepenuhnya konsisten dengan penelitian sebelumnya.","This finding is not entirely consistent with previous studies."],["Saya akan membedakan antara data dan interpretasi.","I would distinguish between the data and the interpretation."],["Mari kita kembali ke bukti yang tersedia.","Let's go back to the available evidence."],["Pertanyaan utamanya adalah apakah perbedaan ini bermakna secara praktis.","The key question is whether this difference is practically meaningful."],["Saya setuju dengan poin tersebut, tetapi ada satu hal yang perlu dipertimbangkan.","I agree with that point, but there is one thing we need to consider."],["Saya melihat data ini sedikit berbeda.","I interpret these data somewhat differently."],["Bukti yang ada belum cukup untuk menarik kesimpulan tersebut.","The available evidence is not sufficient to draw that conclusion."],["Mari kita bandingkan hasil ini dengan kelompok kontrol.","Let's compare these results with the control group."],["Implikasi dari temuan ini adalah...","The implication of this finding is..."],["Kita membutuhkan data tambahan untuk menguji penjelasan ini.","We need additional data to test this explanation."],["Apakah ada alternatif penjelasan untuk hasil ini?","Is there an alternative explanation for this result?"],["Mari kita pertahankan fokus pada pertanyaan penelitian.","Let's keep the focus on the research question."]]};
+let current=[],idx=0,catName="";
+const labels={daily:"Daily Vocabulary",expressions:"Natural Expressions",phrasal:"Phrasal Verbs",meetings:"Meetings & Business",seminars:"Seminars & Presentations",scientific:"Scientific Discussion",random:"Random Practice"};
+function start(cat){current=cat==="random"?Object.entries(data).flatMap(([k,v])=>v.map(x=>[...x,k])).sort(()=>Math.random()-.5):data[cat].map(x=>[...x,cat]);idx=0;catName=labels[cat];home.classList.add("hidden");practice.classList.remove("hidden");show()}
+function show(){let x=current[idx];document.getElementById("cat").textContent=catName;document.getElementById("counter").textContent=(idx+1)+" / "+current.length;indo.textContent=x[0];eng.textContent=x[1];note.textContent=x[2]||"";answer.classList.add("hidden");pbar.style.width=((idx+1)/current.length*100)+"%"}
+function reveal(){answer.classList.remove("hidden");localStorage.seen=Number(localStorage.seen||0)+1;updateProgress()}
+function next(){idx=(idx+1)%current.length;show()}
+function goHome(){practice.classList.add("hidden");home.classList.remove("hidden");updateProgress()}
+function speak(){let u=new SpeechSynthesisUtterance(eng.textContent);u.lang="en-US";speechSynthesis.cancel();speechSynthesis.speak(u)}
+function updateProgress(){let n=Number(localStorage.seen||0);seen.textContent=n;bar.style.width=Math.min(n/1000*100,100)+"%"}
+function resetProgress(){if(confirm("Reset semua progress?")){localStorage.removeItem("seen");updateProgress()}}
+updateProgress();
+</script>
+</body></html>
