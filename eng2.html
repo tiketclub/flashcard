@@ -1,0 +1,287 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg);
+  color: var(--text-main);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 100vh;
+  padding: 16px;
+  line-height: 1.5;
+}
+
+header {
+  width: 100%;
+  max-width: 480px;
+  text-align: center;
+  margin-top: 8px;
+  margin-bottom: 12px;
+}
+
+header h1 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+  letter-spacing: -0.02em;
+}
+
+header p {
+  font-size: 0.825rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.progress-wrapper {
+  width: 100%;
+  max-width: 480px;
+  margin-bottom: 16px;
+}
+
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.progress-bar-bg {
+  width: 100%;
+  height: 8px;
+  background-color: var(--border);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  width: 0.5%;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  border-radius: 9999px;
+  transition: width 0.3s ease;
+}
+
+.flashcard-container {
+  width: 100%;
+  max-width: 480px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.flashcard {
+  width: 100%;
+  min-height: 280px;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.card-badge {
+  align-self: flex-start;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 4px 10px;
+  border-radius: 8px;
+  background-color: var(--primary-light);
+  color: var(--primary-dark);
+}
+
+.content-section {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.label-lang {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.sentence-id {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
+
+.divider {
+  height: 1px;
+  background-color: var(--border);
+  margin: 14px 0;
+}
+
+.sentence-en-box {
+  min-height: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.sentence-en {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+  line-height: 1.4;
+  display: none;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.audio-btn {
+  display: none;
+  margin-top: 10px;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 9999px;
+  padding: 6px 14px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  align-items: center;
+  gap: 6px;
+}
+
+.audio-btn:active {
+  background-color: var(--primary-light);
+  color: var(--primary-dark);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.placeholder-en {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.controls-wrapper {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.btn-main {
+  width: 100%;
+  padding: 15px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 14px;
+  background-color: var(--primary);
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(13, 148, 136, 0.25);
+  transition: all 0.2s ease;
+}
+
+.btn-main:active {
+  background-color: var(--primary-dark);
+  transform: scale(0.98);
+}
+
+.nav-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 10px;
+}
+
+.btn-secondary {
+  padding: 14px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background-color: #ffffff;
+  color: var(--text-main);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:active {
+  background-color: #f1f5f9;
+  transform: scale(0.98);
+}
+
+.btn-next {
+  background-color: #0f172a;
+  color: #ffffff;
+  border: none;
+}
+
+.btn-next:active {
+  background-color: #334155;
+}
+
+.btn-shuffle {
+  margin-top: 4px;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 6px;
+}
+
+footer {
+  margin-top: 12px;
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+
+  <div class="content-section">
+    <div class="label-lang">Bahasa Indonesia</div>
+    <div class="sentence-id" id="text-id">Saya bangun jam enam.</div>
+
+    <div class="divider"></div>
+
+    <div class="label-lang">Bahasa Inggris</div>
+    <div class="sentence-en-box">
+      <div class="sentence-en" id="text-en">I wake up at six.</div>
+      <div class="placeholder-en" id="text-placeholder">Klik tombol "Terjemahkan" untuk melihat jawaban</div>
+      <button class="audio-btn" id="audio-btn" onclick="playAudio()">🔊 Dengarkan Audio</button>
+    </div>
+  </div>
+
+  <div></div>
+</div>
+
+
+<div class="nav-buttons">
+  <button class="btn-secondary" id="prev-btn" onclick="prevCard()">Kembali</button>
+  <button class="btn-secondary btn-next" id="next-btn" onclick="nextCard()">Next →</button>
+</div>
+
+<button class="btn-shuffle" onclick="shuffleCards()">Acak Urutan Kalimat</button>
+
+
