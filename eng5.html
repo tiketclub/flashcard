@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>English Flashcards - Essential Collocations</title>
+  <script type="text/javascript" src="https://me.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=-HkyuitePu9pAPQVp5cCp_yupDN-XmtYKRdbNh3ql0niqVnnlxPw9wdXczK9YHvX0kmxew8GusJjhf1ujuddn-3kGb5EmR63OKzr3CrY4kYHzsHf3xAIhjstpagTbaHU3NSs6Lf4vt8h3ZMskuwirqaCZAPeT_-8YelPyj7ZteYNgta6oaNjvpuwUP3twrZR07pkwf_WkuevFSsyIs-fCcRu9BDmoF2sblbI-00QQ5QYc_e_11AgoLCdYX8SuutMaMD7s63u-joc293U6US5QlJaEPZEXygnWp5SUJkcmIu1meOw5Qzgn8V0vptnBxUcdC6PE0sXswsQP6lLwTWYEw" charset="UTF-8"></script><style>
+    :root {
+      --primary: #4f46e5;
+      --primary-dark: #4338ca;
+      --primary-light: #e0e7ff;
+      --accent: #10b981;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 100vh;
+      padding: 16px;
+      line-height: 1.5;
+    }
+
+    header {
+      width: 100%;
+      max-width: 480px;
+      text-align: center;
+      margin-top: 8px;
+      margin-bottom: 12px;
+    }
+
+    header h1 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      letter-spacing: -0.02em;
+    }
+
+    header p {
+      font-size: 0.825rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .progress-wrapper {
+      width: 100%;
+      max-width: 480px;
+      margin-bottom: 16px;
+    }
+
+    .progress-info {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .progress-bar-bg {
+      width: 100%;
+      height: 8px;
+      background-color: var(--border);
+      border-radius: 9999px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 1%;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      border-radius: 9999px;
+      transition: width 0.3s ease;
+    }
+
+    .flashcard-container {
+      width: 100%;
+      max-width: 480px;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .flashcard {
+      width: 100%;
+      min-height: 280px;
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .card-badge {
+      align-self: flex-start;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 4px 10px;
+      border-radius: 8px;
+      background-color: var(--primary-light);
+      color: var(--primary);
+    }
+
+    .content-section {
+      margin: 20px 0;
+      text-align: center;
+    }
+
+    .label-lang {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    .sentence-id {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 16px;
+      line-height: 1.4;
+    }
+
+    .divider {
+      height: 1px;
+      background-color: var(--border);
+      margin: 14px 0;
+    }
+
+    .sentence-en-box {
+      min-height: 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .sentence-en {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      line-height: 1.4;
+      display: none;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .audio-btn {
+      display: none;
+      margin-top: 10px;
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 9999px;
+      padding: 6px 14px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .audio-btn:active {
+      background-color: var(--primary-light);
+      color: var(--primary);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .placeholder-en {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .controls-wrapper {
+      width: 100%;
+      max-width: 480px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .btn-main {
+      width: 100%;
+      padding: 15px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 14px;
+      background-color: var(--primary);
+      color: #ffffff;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
+      transition: all 0.2s ease;
+    }
+
+    .btn-main:active {
+      background-color: var(--primary-dark);
+      transform: scale(0.98);
+    }
+
+    .nav-buttons {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 10px;
+    }
+
+    .btn-secondary {
+      padding: 14px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background-color: #ffffff;
+      color: var(--text-main);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-secondary:active {
+      background-color: #f1f5f9;
+      transform: scale(0.98);
+    }
+
+    .btn-next {
+      background-color: #0f172a;
+      color: #ffffff;
+      border: none;
+    }
+
+    .btn-next:active {
+      background-color: #334155;
+    }
+
+    .btn-shuffle {
+      margin-top: 4px;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      cursor: pointer;
+      text-decoration: underline;
+      padding: 6px;
+    }
+
+    footer {
+      margin-top: 12px;
+      font-size: 0.75rem;
+      color: #94a3b8;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>English Flashcards</h1>
+    <p>Essential Collocations - 100 Kolokasi Penting</p>
+  </header>
+
+  <div class="progress-wrapper">
+    <div class="progress-info">
+      <span>Nomor: <strong id="card-counter">1</strong> / 100</span>
+      <span id="percent-indicator">1%</span>
+    </div>
+    <div class="progress-bar-bg">
+      <div class="progress-bar-fill" id="progress-fill"></div>
+    </div>
+  </div>
+
+  <div class="flashcard-container">
+    <div class="flashcard" id="card">
+      <span class="card-badge" id="card-tag">Kalimat #1</span>
+
+      <div class="content-section">
+        <div class="label-lang">Bahasa Indonesia</div>
+        <div class="sentence-id" id="text-id">Kita harus membuat keputusan hari ini.</div>
+
+        <div class="divider"></div>
+
+        <div class="label-lang">Bahasa Inggris</div>
+        <div class="sentence-en-box">
+          <div class="sentence-en" id="text-en">We must make a decision today.</div>
+          <div class="placeholder-en" id="text-placeholder">Klik tombol "Terjemahkan" untuk melihat jawaban</div>
+          <button class="audio-btn" id="audio-btn" onclick="playAudio()">🔊 Dengarkan Audio</button>
+        </div>
+      </div>
+
+      <div></div>
+    </div>
+  </div>
+
+  <div class="controls-wrapper">
+    <button class="btn-main" id="translate-btn" onclick="showTranslation()">Terjemahkan</button>
+
+    <div class="nav-buttons">
+      <button class="btn-secondary" id="prev-btn" onclick="prevCard()">Kembali</button>
+      <button class="btn-secondary btn-next" id="next-btn" onclick="nextCard()">Next &rarr;</button>
+    </div>
+
+    <button class="btn-shuffle" onclick="shuffleCards()">Acak Urutan Kalimat</button>
+  </div>
+
+  <footer>
+    Tampilan optimal untuk smartphone. Dapat dipelajari kapan saja.
+  </footer>
+
+  <script>
+    const sentences = [
+  {
+    "id": 1,
+    "id_text": "Kita harus membuat keputusan hari ini.",
+    "en_text": "We must make a decision today."
+  },
+  {
+    "id": 2,
+    "id_text": "Silakan istirahat sekarang.",
+    "en_text": "Please take a break now."
+  },
+  {
+    "id": 3,
+    "id_text": "Biarkan saya melihatnya sebentar.",
+    "en_text": "Let me have a look at it."
+  },
+  {
+    "id": 4,
+    "id_text": "Perhatikan sang guru.",
+    "en_text": "Pay attention to the teacher."
+  },
+  {
+    "id": 5,
+    "id_text": "Saya harus menjaga rahasia.",
+    "en_text": "I need to keep a secret."
+  },
+  {
+    "id": 6,
+    "id_text": "Jangan membuat kesalahan.",
+    "en_text": "Do not make a mistake."
+  },
+  {
+    "id": 7,
+    "id_text": "Dia terkena flu kemarin.",
+    "en_text": "He caught a cold yesterday."
+  },
+  {
+    "id": 8,
+    "id_text": "Tolong bantu saya.",
+    "en_text": "Please do me a favor."
+  },
+  {
+    "id": 9,
+    "id_text": "Dia memecahkan rekor dunia.",
+    "en_text": "She broke the world record."
+  },
+  {
+    "id": 10,
+    "id_text": "Bisakah Anda membantu saya?",
+    "en_text": "Can you give me a hand?"
+  },
+  {
+    "id": 11,
+    "id_text": "Kami menghemat banyak uang.",
+    "en_text": "We saved a lot of money."
+  },
+  {
+    "id": 12,
+    "id_text": "Rapat telah berakhir.",
+    "en_text": "The meeting came to an end."
+  },
+  {
+    "id": 13,
+    "id_text": "Dia menjalankan bisnis yang sukses.",
+    "en_text": "He runs a successful business."
+  },
+  {
+    "id": 14,
+    "id_text": "Saya memasang alarm untuk jam lima.",
+    "en_text": "I set an alarm for five."
+  },
+  {
+    "id": 15,
+    "id_text": "Mari kita cairkan suasana.",
+    "en_text": "Let us break the ice."
+  },
+  {
+    "id": 16,
+    "id_text": "Penjelasan itu masuk akal.",
+    "en_text": "That explanation makes sense."
+  },
+  {
+    "id": 17,
+    "id_text": "Jaga diri Anda baik-baik.",
+    "en_text": "Take care of yourself."
+  },
+  {
+    "id": 18,
+    "id_text": "Kita memiliki masalah di sini.",
+    "en_text": "We have a problem here."
+  },
+  {
+    "id": 19,
+    "id_text": "Bayar tagihan secara daring dengan mudah.",
+    "en_text": "Pay the bill online easily."
+  },
+  {
+    "id": 20,
+    "id_text": "Tetap hubungi kami.",
+    "en_text": "Keep in touch with us."
+  },
+  {
+    "id": 21,
+    "id_text": "Saya membuat kemajuan setiap minggu.",
+    "en_text": "I make progress every week."
+  },
+  {
+    "id": 22,
+    "id_text": "Ambil risiko dan cobalah.",
+    "en_text": "Take a risk and try."
+  },
+  {
+    "id": 23,
+    "id_text": "Semoga perjalanan Anda menyenangkan hari ini.",
+    "en_text": "Have a nice trip today."
+  },
+  {
+    "id": 24,
+    "id_text": "Berikan pujian kepadanya.",
+    "en_text": "Pay a compliment to her."
+  },
+  {
+    "id": 25,
+    "id_text": "Catat penggunaan waktu Anda.",
+    "en_text": "Keep track of your time."
+  },
+  {
+    "id": 26,
+    "id_text": "Lakukan yang terbaik setiap saat.",
+    "en_text": "Do your best every time."
+  },
+  {
+    "id": 27,
+    "id_text": "Dia melanggar janjinya lagi.",
+    "en_text": "He broke his promise again."
+  },
+  {
+    "id": 28,
+    "id_text": "Dia memberikan saran yang bagus kemarin.",
+    "en_text": "She gave good advice yesterday."
+  },
+  {
+    "id": 29,
+    "id_text": "Hemat waktu dengan alat ini.",
+    "en_text": "Save time with this tool."
+  },
+  {
+    "id": 30,
+    "id_text": "Sebuah ide hebat muncul di pikiran.",
+    "en_text": "A great idea came to mind."
+  },
+  {
+    "id": 31,
+    "id_text": "Buat reservasi terlebih dahulu.",
+    "en_text": "Make a reservation in advance."
+  },
+  {
+    "id": 32,
+    "id_text": "Ambil tindakan segera sekarang.",
+    "en_text": "Take action immediately now."
+  },
+  {
+    "id": 33,
+    "id_text": "Berbincanglah dengannya.",
+    "en_text": "Have a chat with him."
+  },
+  {
+    "id": 34,
+    "id_text": "Awasi bayi itu.",
+    "en_text": "Keep an eye on the baby."
+  },
+  {
+    "id": 35,
+    "id_text": "Kejarlah kereta pagi lebih awal.",
+    "en_text": "Catch the morning train early."
+  },
+  {
+    "id": 36,
+    "id_text": "Saya akan melakukan penelitian.",
+    "en_text": "I will do the research."
+  },
+  {
+    "id": 37,
+    "id_text": "Jangan melanggar hukum.",
+    "en_text": "Do not break the law."
+  },
+  {
+    "id": 38,
+    "id_text": "Beri saya tumpangan pulang.",
+    "en_text": "Give me a ride home."
+  },
+  {
+    "id": 39,
+    "id_text": "Hemat ruang di dalam tas Anda.",
+    "en_text": "Save space in your bag."
+  },
+  {
+    "id": 40,
+    "id_text": "Harga turun bulan ini.",
+    "en_text": "Prices came down this month."
+  },
+  {
+    "id": 41,
+    "id_text": "Berusahalah untuk belajar.",
+    "en_text": "Make an effort to study."
+  },
+  {
+    "id": 42,
+    "id_text": "Catat materi selama pelajaran.",
+    "en_text": "Take notes during the class."
+  },
+  {
+    "id": 43,
+    "id_text": "Bersenang-senanglah di pesta.",
+    "en_text": "Have fun at the party."
+  },
+  {
+    "id": 44,
+    "id_text": "Tetap tenang di bawah tekanan.",
+    "en_text": "Keep calm under pressure."
+  },
+  {
+    "id": 45,
+    "id_text": "Dia mencuri perhatian pria itu dengan cepat.",
+    "en_text": "She caught his eye quickly."
+  },
+  {
+    "id": 46,
+    "id_text": "Kami berbisnis bersama.",
+    "en_text": "We do business together."
+  },
+  {
+    "id": 47,
+    "id_text": "Sampaikan kabar itu kepadanya.",
+    "en_text": "Break the news to him."
+  },
+  {
+    "id": 48,
+    "id_text": "Berikan izin untuk masuk.",
+    "en_text": "Give permission to enter."
+  },
+  {
+    "id": 49,
+    "id_text": "Hemat energi setiap hari.",
+    "en_text": "Save energy every day."
+  },
+  {
+    "id": 50,
+    "id_text": "Aturan itu mulai berlaku.",
+    "en_text": "The rule came into effect."
+  },
+  {
+    "id": 51,
+    "id_text": "Buat pilihan sekarang juga.",
+    "en_text": "Make a choice right now."
+  },
+  {
+    "id": 52,
+    "id_text": "Ambil kesempatan pada hal ini.",
+    "en_text": "Take a chance on this."
+  },
+  {
+    "id": 53,
+    "id_text": "Beristirahatlah setelah bekerja.",
+    "en_text": "Have a rest after work."
+  },
+  {
+    "id": 54,
+    "id_text": "Ingat baik-baik aturan ini.",
+    "en_text": "Keep in mind this rule."
+  },
+  {
+    "id": 55,
+    "id_text": "Naiklah bus pada jam delapan.",
+    "en_text": "Catch a bus at eight."
+  },
+  {
+    "id": 56,
+    "id_text": "Dia mengerjakan PR setiap malam.",
+    "en_text": "She does homework every night."
+  },
+  {
+    "id": 57,
+    "id_text": "Hentikan kebiasaan buruk sekarang.",
+    "en_text": "Break a bad habit now."
+  },
+  {
+    "id": 58,
+    "id_text": "Pertimbangkan rencana ini baik-baik.",
+    "en_text": "Give thought to this plan."
+  },
+  {
+    "id": 59,
+    "id_text": "Selamatkan satu nyawa hari ini.",
+    "en_text": "Save a life today."
+  },
+  {
+    "id": 60,
+    "id_text": "Kami mencapai kesepakatan akhir.",
+    "en_text": "We reached a final agreement."
+  },
+  {
+    "id": 61,
+    "id_text": "Buat alasan atas keterlambatan.",
+    "en_text": "Make an excuse for delay."
+  },
+  {
+    "id": 62,
+    "id_text": "Luangkan waktu untuk berpikir saksama.",
+    "en_text": "Take time to think carefully."
+  },
+  {
+    "id": 63,
+    "id_text": "Miliki rasa harapan.",
+    "en_text": "Have a feeling of hope."
+  },
+  {
+    "id": 64,
+    "id_text": "Jaga kendali atas kendaraan.",
+    "en_text": "Keep control of the vehicle."
+  },
+  {
+    "id": 65,
+    "id_text": "Rumah itu terbakar dengan cepat.",
+    "en_text": "The house caught fire fast."
+  },
+  {
+    "id": 66,
+    "id_text": "Polusi merusak lingkungan sekitar.",
+    "en_text": "Pollution does damage to environment."
+  },
+  {
+    "id": 67,
+    "id_text": "Dia melukai hati saya dengan dalam.",
+    "en_text": "She broke my heart deeply."
+  },
+  {
+    "id": 68,
+    "id_text": "Sampaikan pidato besok pagi.",
+    "en_text": "Give a speech tomorrow morning."
+  },
+  {
+    "id": 69,
+    "id_text": "Tabung uang untuk masa depan.",
+    "en_text": "Save money for the future."
+  },
+  {
+    "id": 70,
+    "id_text": "Capai kesimpulan yang jelas.",
+    "en_text": "Come to a clear conclusion."
+  },
+  {
+    "id": 71,
+    "id_text": "Lakukan panggilan telepon sekarang.",
+    "en_text": "Make a phone call now."
+  },
+  {
+    "id": 72,
+    "id_text": "Bertanggung jawablah atas tindakan Anda.",
+    "en_text": "Take responsibility for your actions."
+  },
+  {
+    "id": 73,
+    "id_text": "Minumlah bersama saya.",
+    "en_text": "Have a drink with me."
+  },
+  {
+    "id": 74,
+    "id_text": "Tepati janji yang telah Anda buat.",
+    "en_text": "Keep a promise you made."
+  },
+  {
+    "id": 75,
+    "id_text": "Memandang pemandangan gunung.",
+    "en_text": "Catch sight of the mountain."
+  },
+  {
+    "id": 76,
+    "id_text": "Berolahragalah setiap pagi secara teratur.",
+    "en_text": "Do exercise every morning regularly."
+  },
+  {
+    "id": 77,
+    "id_text": "Pecahkan keheningan di dalam ruangan.",
+    "en_text": "Break the silence in the room."
+  },
+  {
+    "id": 78,
+    "id_text": "Utamakan kesehatan Anda.",
+    "en_text": "Give priority to your health."
+  },
+  {
+    "id": 79,
+    "id_text": "Simpan hasil kerja Anda di komputer.",
+    "en_text": "Save your work on computer."
+  },
+  {
+    "id": 80,
+    "id_text": "Dia menjadi sangat marah.",
+    "en_text": "He went crazy with anger."
+  },
+  {
+    "id": 81,
+    "id_text": "Buat perubahan positif di masyarakat.",
+    "en_text": "Make a difference in society."
+  },
+  {
+    "id": 82,
+    "id_text": "Tarik napas dalam-dalam sekarang.",
+    "en_text": "Take a deep breath now."
+  },
+  {
+    "id": 83,
+    "id_text": "Mandilah sebelum tidur.",
+    "en_text": "Have a bath before bed."
+  },
+  {
+    "id": 84,
+    "id_text": "Tetap tenang di perpustakaan.",
+    "en_text": "Keep quiet in the library."
+  },
+  {
+    "id": 85,
+    "id_text": "Kejar penerbangan pada siang hari.",
+    "en_text": "Catch a flight at noon."
+  },
+  {
+    "id": 86,
+    "id_text": "Cuci pakaian pada akhir pekan.",
+    "en_text": "Do the laundry on weekends."
+  },
+  {
+    "id": 87,
+    "id_text": "Jangan melanggar kode etik.",
+    "en_text": "Do not break the code of conduct."
+  },
+  {
+    "id": 88,
+    "id_text": "Berikan masukan yang jelas tepat waktu.",
+    "en_text": "Give clear feedback on time."
+  },
+  {
+    "id": 89,
+    "id_text": "Simpan data ke penggerak eksternal.",
+    "en_text": "Save data to external drive."
+  },
+  {
+    "id": 90,
+    "id_text": "Perusahaan bangkrut setelah kerugian besar.",
+    "en_text": "Companies go bankrupt after heavy loss."
+  },
+  {
+    "id": 91,
+    "id_text": "Sediakan ruang untuk barang baru.",
+    "en_text": "Make room for new items."
+  },
+  {
+    "id": 92,
+    "id_text": "Duduklah di barisan depan.",
+    "en_text": "Take a seat in front."
+  },
+  {
+    "id": 93,
+    "id_text": "Jangan berdebat dengannya.",
+    "en_text": "Do not have an argument with him."
+  },
+  {
+    "id": 94,
+    "id_text": "Jaga kesehatan dengan makanan bergizi.",
+    "en_text": "Keep healthy with good food."
+  },
+  {
+    "id": 95,
+    "id_text": "Bertemu dan mengobrol dengan teman lama.",
+    "en_text": "Catch up with old friends."
+  },
+  {
+    "id": 96,
+    "id_text": "Cuci piring setelah makan malam.",
+    "en_text": "Do the dishes after dinner."
+  },
+  {
+    "id": 97,
+    "id_text": "Jangan ingkar janji kepada siapa pun.",
+    "en_text": "Do not break a promise to anyone."
+  },
+  {
+    "id": 98,
+    "id_text": "Berikan sambutan hangat hari ini.",
+    "en_text": "Give a warm welcome today."
+  },
+  {
+    "id": 99,
+    "id_text": "Tetapkan target yang jelas hari ini.",
+    "en_text": "Set a clear goal today."
+  },
+  {
+    "id": 100,
+    "id_text": "Kita kehabisan waktu dengan cepat.",
+    "en_text": "We are running out of time fast."
+  }
+];
+
+    let currentIndex = 0;
+    let isTranslated = false;
+
+    const counterEl = document.getElementById("card-counter");
+    const percentEl = document.getElementById("percent-indicator");
+    const progressFillEl = document.getElementById("progress-fill");
+    const tagEl = document.getElementById("card-tag");
+    const textIdEl = document.getElementById("text-id");
+    const textEnEl = document.getElementById("text-en");
+    const placeholderEl = document.getElementById("text-placeholder");
+    const audioBtnEl = document.getElementById("audio-btn");
+    const translateBtnEl = document.getElementById("translate-btn");
+    const prevBtnEl = document.getElementById("prev-btn");
+
+    function updateCard() {
+      const current = sentences[currentIndex];
+      tagEl.textContent = "Kalimat #" + current.id;
+      counterEl.textContent = (currentIndex + 1);
+      
+      const percent = Math.round(((currentIndex + 1) / sentences.length) * 100);
+      percentEl.textContent = percent + "%";
+      progressFillEl.style.width = percent + "%";
+
+      textIdEl.textContent = current.id_text;
+      textEnEl.textContent = current.en_text;
+
+      // Reset translation state
+      isTranslated = false;
+      textEnEl.style.display = "none";
+      audioBtnEl.style.display = "none";
+      placeholderEl.style.display = "block";
+      translateBtnEl.style.display = "block";
+      translateBtnEl.textContent = "Terjemahkan";
+
+      prevBtnEl.disabled = currentIndex === 0;
+      prevBtnEl.style.opacity = currentIndex === 0 ? "0.4" : "1";
+    }
+
+    function showTranslation() {
+      if (!isTranslated) {
+        isTranslated = true;
+        placeholderEl.style.display = "none";
+        textEnEl.style.display = "block";
+        audioBtnEl.style.display = "inline-flex";
+        translateBtnEl.textContent = "Sudah Diterjemahkan";
+        translateBtnEl.style.backgroundColor = "#10b981";
+      }
+    }
+
+    function nextCard() {
+      if (currentIndex < sentences.length - 1) {
+        currentIndex++;
+      } else {
+        currentIndex = 0; // Loop kembali ke awal
+      }
+      translateBtnEl.style.backgroundColor = "var(--primary)";
+      updateCard();
+    }
+
+    function prevCard() {
+      if (currentIndex > 0) {
+        currentIndex--;
+        translateBtnEl.style.backgroundColor = "var(--primary)";
+        updateCard();
+      }
+    }
+
+    function shuffleCards() {
+      for (let i = sentences.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [sentences[i], sentences[j]] = [sentences[j], sentences[i]];
+      }
+      currentIndex = 0;
+      translateBtnEl.style.backgroundColor = "var(--primary)";
+      updateCard();
+    }
+
+    function playAudio() {
+      if ("speechSynthesis" in window) {
+        const utterance = new SpeechSynthesisUtterance(sentences[currentIndex].en_text);
+        utterance.lang = "en-US";
+        utterance.rate = 0.9;
+        window.speechSynthesis.speak(utterance);
+      }
+    }
+
+    // Dukungan navigasi keyboard (desktop/laptop)
+    document.addEventListener("keydown", function(e) {
+      if (e.code === "Space") {
+        e.preventDefault();
+        showTranslation();
+      } else if (e.code === "ArrowRight") {
+        nextCard();
+      } else if (e.code === "ArrowLeft") {
+        prevCard();
+      }
+    });
+
+    // Swipe gesture support on smartphone
+    let touchstartX = 0;
+    let touchendX = 0;
+    const cardEl = document.getElementById("card");
+
+    cardEl.addEventListener("touchstart", function(e) {
+      touchstartX = e.changedTouches[0].screenX;
+    }, false);
+
+    cardEl.addEventListener("touchend", function(e) {
+      touchendX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }, false);
+
+    function handleSwipe() {
+      if (touchendX < touchstartX - 50) {
+        nextCard(); // Geser ke kiri untuk Next
+      }
+      if (touchendX > touchstartX + 50) {
+        prevCard(); // Geser ke kanan untuk Prev
+      }
+    }
+
+    // Inisialisasi awal
+    updateCard();
+  </script>
+</body>
+</html>
