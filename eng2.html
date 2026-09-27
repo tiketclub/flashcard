@@ -1,287 +1,1465 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  -webkit-tap-highlight-color: transparent;
-}
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>English Flashcards - Daily Routine</title>
+  <script type="text/javascript" src="https://me.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=R0s3gAbbvuKTm4YGFR86dgT2Xvcfj2MECKe0_HtyL9Psig4YgyUdVXAobWZYmnDaP8O5V_usC2k7F6jYhF7RD7n8yZ-fEbZKUdnYwbK8QO0GV0fXb2ErtZVGGy7RsjSj8bHp2WVZj7DwFFRXa_dqRq5lnJ56GiIcMWsjUJNsHvAheVRUfwAOjfvWriOEMJACVYoGvhjyz0PAuTAFGGm627glFyzPwHzwsiGoCDVvC-2HokwdJGOy7eBsy1Zs-2yqv9oiF5zRWui125gQ_sfJ_3-hNSt2tX-4lYahcMwEEsjJtHDg9U3BKhu2VzIEBf_eQkE713w3AnExCe45EUgLOQ" charset="UTF-8"></script><style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --primary-light: #eff6ff;
+      --accent: #10b981;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+    }
 
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  background-color: var(--bg);
-  color: var(--text-main);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  min-height: 100vh;
-  padding: 16px;
-  line-height: 1.5;
-}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
 
-header {
-  width: 100%;
-  max-width: 480px;
-  text-align: center;
-  margin-top: 8px;
-  margin-bottom: 12px;
-}
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 100vh;
+      padding: 16px;
+      line-height: 1.5;
+    }
 
-header h1 {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--primary-dark);
-  letter-spacing: -0.02em;
-}
+    header {
+      width: 100%;
+      max-width: 480px;
+      text-align: center;
+      margin-top: 8px;
+      margin-bottom: 12px;
+    }
 
-header p {
-  font-size: 0.825rem;
-  color: var(--text-muted);
-  margin-top: 2px;
-}
+    header h1 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      letter-spacing: -0.02em;
+    }
 
-.progress-wrapper {
-  width: 100%;
-  max-width: 480px;
-  margin-bottom: 16px;
-}
+    header p {
+      font-size: 0.825rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
 
-.progress-info {
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--text-muted);
-  margin-bottom: 6px;
-}
+    .progress-wrapper {
+      width: 100%;
+      max-width: 480px;
+      margin-bottom: 16px;
+    }
 
-.progress-bar-bg {
-  width: 100%;
-  height: 8px;
-  background-color: var(--border);
-  border-radius: 9999px;
-  overflow: hidden;
-}
+    .progress-info {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
 
-.progress-bar-fill {
-  height: 100%;
-  width: 0.5%;
-  background: linear-gradient(90deg, var(--primary), var(--accent));
-  border-radius: 9999px;
-  transition: width 0.3s ease;
-}
+    .progress-bar-bg {
+      width: 100%;
+      height: 8px;
+      background-color: var(--border);
+      border-radius: 9999px;
+      overflow: hidden;
+    }
 
-.flashcard-container {
-  width: 100%;
-  max-width: 480px;
-  flex: 1;
-  display: flex;
-  align-items: center;
-  margin-bottom: 16px;
-}
+    .progress-bar-fill {
+      height: 100%;
+      width: 0.5%;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      border-radius: 9999px;
+      transition: width 0.3s ease;
+    }
 
-.flashcard {
-  width: 100%;
-  min-height: 280px;
-  background-color: var(--card-bg);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  box-shadow: var(--shadow);
-  padding: 24px 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  position: relative;
-}
+    .flashcard-container {
+      width: 100%;
+      max-width: 480px;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      margin-bottom: 16px;
+    }
 
-.card-badge {
-  align-self: flex-start;
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  padding: 4px 10px;
-  border-radius: 8px;
-  background-color: var(--primary-light);
-  color: var(--primary-dark);
-}
+    .flashcard {
+      width: 100%;
+      min-height: 280px;
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
 
-.content-section {
-  margin: 20px 0;
-  text-align: center;
-}
+    .card-badge {
+      align-self: flex-start;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 4px 10px;
+      border-radius: 8px;
+      background-color: var(--primary-light);
+      color: var(--primary);
+    }
 
-.label-lang {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--text-muted);
-  margin-bottom: 6px;
-  font-weight: 600;
-}
+    .content-section {
+      margin: 20px 0;
+      text-align: center;
+    }
 
-.sentence-id {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--text-main);
-  margin-bottom: 16px;
-  line-height: 1.4;
-}
+    .label-lang {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
 
-.divider {
-  height: 1px;
-  background-color: var(--border);
-  margin: 14px 0;
-}
+    .sentence-id {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 16px;
+      line-height: 1.4;
+    }
 
-.sentence-en-box {
-  min-height: 60px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
+    .divider {
+      height: 1px;
+      background-color: var(--border);
+      margin: 14px 0;
+    }
 
-.sentence-en {
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: var(--primary-dark);
-  line-height: 1.4;
-  display: none;
-  animation: fadeIn 0.3s ease-in-out;
-}
+    .sentence-en-box {
+      min-height: 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
 
-.audio-btn {
-  display: none;
-  margin-top: 10px;
-  background: none;
-  border: 1px solid var(--border);
-  border-radius: 9999px;
-  padding: 6px 14px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--text-muted);
-  cursor: pointer;
-  align-items: center;
-  gap: 6px;
-}
+    .sentence-en {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      line-height: 1.4;
+      display: none;
+      animation: fadeIn 0.3s ease-in-out;
+    }
 
-.audio-btn:active {
-  background-color: var(--primary-light);
-  color: var(--primary-dark);
-}
+    .audio-btn {
+      display: none;
+      margin-top: 10px;
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 9999px;
+      padding: 6px 14px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      align-items: center;
+      gap: 6px;
+    }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(6px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+    .audio-btn:active {
+      background-color: var(--primary-light);
+      color: var(--primary);
+    }
 
-.placeholder-en {
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  font-style: italic;
-}
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-.controls-wrapper {
-  width: 100%;
-  max-width: 480px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
+    .placeholder-en {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
 
-.btn-main {
-  width: 100%;
-  padding: 15px;
-  font-size: 1.05rem;
-  font-weight: 700;
-  border: none;
-  border-radius: 14px;
-  background-color: var(--primary);
-  color: #ffffff;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(13, 148, 136, 0.25);
-  transition: all 0.2s ease;
-}
+    .controls-wrapper {
+      width: 100%;
+      max-width: 480px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
 
-.btn-main:active {
-  background-color: var(--primary-dark);
-  transform: scale(0.98);
-}
+    .btn-main {
+      width: 100%;
+      padding: 15px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 14px;
+      background-color: var(--primary);
+      color: #ffffff;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+      transition: all 0.2s ease;
+    }
 
-.nav-buttons {
-  display: grid;
-  grid-template-columns: 1fr 1.5fr;
-  gap: 10px;
-}
+    .btn-main:active {
+      background-color: var(--primary-dark);
+      transform: scale(0.98);
+    }
 
-.btn-secondary {
-  padding: 14px;
-  font-size: 0.95rem;
-  font-weight: 600;
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  background-color: #ffffff;
-  color: var(--text-main);
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
+    .nav-buttons {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 10px;
+    }
 
-.btn-secondary:active {
-  background-color: #f1f5f9;
-  transform: scale(0.98);
-}
+    .btn-secondary {
+      padding: 14px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background-color: #ffffff;
+      color: var(--text-main);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
 
-.btn-next {
-  background-color: #0f172a;
-  color: #ffffff;
-  border: none;
-}
+    .btn-secondary:active {
+      background-color: #f1f5f9;
+      transform: scale(0.98);
+    }
 
-.btn-next:active {
-  background-color: #334155;
-}
+    .btn-next {
+      background-color: #0f172a;
+      color: #ffffff;
+      border: none;
+    }
 
-.btn-shuffle {
-  margin-top: 4px;
-  background: none;
-  border: none;
-  color: var(--text-muted);
-  font-size: 0.85rem;
-  cursor: pointer;
-  text-decoration: underline;
-  padding: 6px;
-}
+    .btn-next:active {
+      background-color: #334155;
+    }
 
-footer {
-  margin-top: 12px;
-  font-size: 0.75rem;
-  color: #94a3b8;
-}
+    .btn-shuffle {
+      margin-top: 4px;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      cursor: pointer;
+      text-decoration: underline;
+      padding: 6px;
+    }
 
+    footer {
+      margin-top: 12px;
+      font-size: 0.75rem;
+      color: #94a3b8;
+    }
+  </style>
+</head>
+<body>
 
-  <div class="content-section">
-    <div class="label-lang">Bahasa Indonesia</div>
-    <div class="sentence-id" id="text-id">Saya bangun jam enam.</div>
+  <header>
+    <h1>English Flashcards</h1>
+    <p>Daily Routine - 200 Kalimat Aktivitas Sehari-hari</p>
+  </header>
 
-    <div class="divider"></div>
-
-    <div class="label-lang">Bahasa Inggris</div>
-    <div class="sentence-en-box">
-      <div class="sentence-en" id="text-en">I wake up at six.</div>
-      <div class="placeholder-en" id="text-placeholder">Klik tombol "Terjemahkan" untuk melihat jawaban</div>
-      <button class="audio-btn" id="audio-btn" onclick="playAudio()">🔊 Dengarkan Audio</button>
+  <div class="progress-wrapper">
+    <div class="progress-info">
+      <span>Nomor: <strong id="card-counter">1</strong> / 200</span>
+      <span id="percent-indicator">1%</span>
+    </div>
+    <div class="progress-bar-bg">
+      <div class="progress-bar-fill" id="progress-fill"></div>
     </div>
   </div>
 
-  <div></div>
-</div>
+  <div class="flashcard-container">
+    <div class="flashcard" id="card">
+      <span class="card-badge" id="card-tag">Kalimat #1</span>
 
+      <div class="content-section">
+        <div class="label-lang">Bahasa Indonesia</div>
+        <div class="sentence-id" id="text-id">Saya bangun jam enam.</div>
 
-<div class="nav-buttons">
-  <button class="btn-secondary" id="prev-btn" onclick="prevCard()">Kembali</button>
-  <button class="btn-secondary btn-next" id="next-btn" onclick="nextCard()">Next →</button>
-</div>
+        <div class="divider"></div>
 
-<button class="btn-shuffle" onclick="shuffleCards()">Acak Urutan Kalimat</button>
+        <div class="label-lang">Bahasa Inggris</div>
+        <div class="sentence-en-box">
+          <div class="sentence-en" id="text-en">I wake up at six.</div>
+          <div class="placeholder-en" id="text-placeholder">Klik tombol "Terjemahkan" untuk melihat jawaban</div>
+          <button class="audio-btn" id="audio-btn" onclick="playAudio()">🔊 Dengarkan Audio</button>
+        </div>
+      </div>
 
+      <div></div>
+    </div>
+  </div>
 
+  <div class="controls-wrapper">
+    <button class="btn-main" id="translate-btn" onclick="showTranslation()">Terjemahkan</button>
+
+    <div class="nav-buttons">
+      <button class="btn-secondary" id="prev-btn" onclick="prevCard()">Kembali</button>
+      <button class="btn-secondary btn-next" id="next-btn" onclick="nextCard()">Next &rarr;</button>
+    </div>
+
+    <button class="btn-shuffle" onclick="shuffleCards()">Acak Urutan Kalimat</button>
+  </div>
+
+  <footer>
+    Tampilan optimal untuk smartphone. Dapat dipelajari kapan saja.
+  </footer>
+
+  <script>
+    const sentences = [
+  {
+    "id": 1,
+    "id_text": "Saya bangun jam enam.",
+    "en_text": "I wake up at six."
+  },
+  {
+    "id": 2,
+    "id_text": "Alarm saya berbunyi lebih awal.",
+    "en_text": "My alarm rings early."
+  },
+  {
+    "id": 3,
+    "id_text": "Saya mematikan alarm.",
+    "en_text": "I turn off my alarm."
+  },
+  {
+    "id": 4,
+    "id_text": "Saya membuka mata.",
+    "en_text": "I open my eyes."
+  },
+  {
+    "id": 5,
+    "id_text": "Saya meregangkan badan di tempat tidur.",
+    "en_text": "I stretch my body in bed."
+  },
+  {
+    "id": 6,
+    "id_text": "Saya turun dari tempat tidur.",
+    "en_text": "I get out of bed."
+  },
+  {
+    "id": 7,
+    "id_text": "Saya merapikan tempat tidur.",
+    "en_text": "I make my bed."
+  },
+  {
+    "id": 8,
+    "id_text": "Saya memakai sandal rumah.",
+    "en_text": "I put on my slippers."
+  },
+  {
+    "id": 9,
+    "id_text": "Saya berjalan ke kamar mandi.",
+    "en_text": "I walk to the bathroom."
+  },
+  {
+    "id": 10,
+    "id_text": "Saya menyalakan lampu kamar mandi.",
+    "en_text": "I turn on the bathroom light."
+  },
+  {
+    "id": 11,
+    "id_text": "Saya membasuh muka dengan air dingin.",
+    "en_text": "I wash my face with cool water."
+  },
+  {
+    "id": 12,
+    "id_text": "Saya menggosok gigi.",
+    "en_text": "I brush my teeth."
+  },
+  {
+    "id": 13,
+    "id_text": "Saya mengoleskan pasta gigi ke sikat gigi.",
+    "en_text": "I squeeze toothpaste onto my toothbrush."
+  },
+  {
+    "id": 14,
+    "id_text": "Saya berkumur.",
+    "en_text": "I rinse my mouth."
+  },
+  {
+    "id": 15,
+    "id_text": "Saya membuang air kumur.",
+    "en_text": "I spit out the water."
+  },
+  {
+    "id": 16,
+    "id_text": "Saya mengeringkan muka dengan handuk.",
+    "en_text": "I dry my face with a towel."
+  },
+  {
+    "id": 17,
+    "id_text": "Saya mandi air hangat.",
+    "en_text": "I take a warm shower."
+  },
+  {
+    "id": 18,
+    "id_text": "Saya mencuci rambut dengan sampo.",
+    "en_text": "I wash my hair with shampoo."
+  },
+  {
+    "id": 19,
+    "id_text": "Saya menggunakan sabun untuk membersihkan badan.",
+    "en_text": "I use soap to clean my body."
+  },
+  {
+    "id": 20,
+    "id_text": "Saya mematikan pancuran mandi.",
+    "en_text": "I turn off the shower."
+  },
+  {
+    "id": 21,
+    "id_text": "Saya mengeringkan badan dengan handuk bersih.",
+    "en_text": "I dry myself with a clean towel."
+  },
+  {
+    "id": 22,
+    "id_text": "Saya menyisir rambut.",
+    "en_text": "I comb my hair."
+  },
+  {
+    "id": 23,
+    "id_text": "Saya mengeringkan rambut dengan pengering rambut.",
+    "en_text": "I blow-dry my hair."
+  },
+  {
+    "id": 24,
+    "id_text": "Saya memakai pelembab wajah.",
+    "en_text": "I apply moisturizer to my face."
+  },
+  {
+    "id": 25,
+    "id_text": "Saya berpakaian untuk hari ini.",
+    "en_text": "I get dressed for the day."
+  },
+  {
+    "id": 26,
+    "id_text": "Saya memilih pakaian saya.",
+    "en_text": "I pick out my clothes."
+  },
+  {
+    "id": 27,
+    "id_text": "Saya memakai baju saya.",
+    "en_text": "I put on my shirt."
+  },
+  {
+    "id": 28,
+    "id_text": "Saya mengancingkan baju saya.",
+    "en_text": "I button up my shirt."
+  },
+  {
+    "id": 29,
+    "id_text": "Saya memakai celana saya.",
+    "en_text": "I put on my pants."
+  },
+  {
+    "id": 30,
+    "id_text": "Saya memakai ikat pinggang favorit saya.",
+    "en_text": "I wear my favorite belt."
+  },
+  {
+    "id": 31,
+    "id_text": "Saya berjalan ke dapur.",
+    "en_text": "I walk into the kitchen."
+  },
+  {
+    "id": 32,
+    "id_text": "Saya minum segelas air.",
+    "en_text": "I drink a glass of water."
+  },
+  {
+    "id": 33,
+    "id_text": "Saya merebus air di teko.",
+    "en_text": "I boil water in the kettle."
+  },
+  {
+    "id": 34,
+    "id_text": "Saya membuat secangkir kopi segar.",
+    "en_text": "I make a fresh cup of coffee."
+  },
+  {
+    "id": 35,
+    "id_text": "Saya menyeduh teh hijau.",
+    "en_text": "I brew some green tea."
+  },
+  {
+    "id": 36,
+    "id_text": "Saya membuka lemari es.",
+    "en_text": "I open the refrigerator."
+  },
+  {
+    "id": 37,
+    "id_text": "Saya mengambil susu dan telur.",
+    "en_text": "I take out milk and eggs."
+  },
+  {
+    "id": 38,
+    "id_text": "Saya memasak sarapan.",
+    "en_text": "I cook breakfast."
+  },
+  {
+    "id": 39,
+    "id_text": "Saya menggoreng dua butir telur di wajan.",
+    "en_text": "I fry two eggs in the pan."
+  },
+  {
+    "id": 40,
+    "id_text": "Saya memanggang dua potong roti.",
+    "en_text": "I toast two slices of bread."
+  },
+  {
+    "id": 41,
+    "id_text": "Saya mengoleskan mentega pada roti panggang.",
+    "en_text": "I spread butter on my toast."
+  },
+  {
+    "id": 42,
+    "id_text": "Saya menuangkan sereal ke dalam mangkuk.",
+    "en_text": "I pour cereal into a bowl."
+  },
+  {
+    "id": 43,
+    "id_text": "Saya menambahkan susu ke sereal saya.",
+    "en_text": "I add milk to my cereal."
+  },
+  {
+    "id": 44,
+    "id_text": "Saya duduk di meja makan.",
+    "en_text": "I sit down at the dining table."
+  },
+  {
+    "id": 45,
+    "id_text": "Saya menyantap sarapan dengan perlahan.",
+    "en_text": "I eat my breakfast slowly."
+  },
+  {
+    "id": 46,
+    "id_text": "Saya memeriksa berita di ponsel saya.",
+    "en_text": "I check the news on my phone."
+  },
+  {
+    "id": 47,
+    "id_text": "Saya menyapu bersih meja.",
+    "en_text": "I wipe the table clean."
+  },
+  {
+    "id": 48,
+    "id_text": "Saya mencuci piring sarapan.",
+    "en_text": "I wash my breakfast dishes."
+  },
+  {
+    "id": 49,
+    "id_text": "Saya menyimpan piring-piring bersih.",
+    "en_text": "I put the clean dishes away."
+  },
+  {
+    "id": 50,
+    "id_text": "Saya mengemas tas saya untuk hari ini.",
+    "en_text": "I pack my bag for the day."
+  },
+  {
+    "id": 51,
+    "id_text": "Saya memasukkan laptop ke dalam tas.",
+    "en_text": "I put my laptop in my bag."
+  },
+  {
+    "id": 52,
+    "id_text": "Saya mengambil dompet dan kunci.",
+    "en_text": "I grab my wallet and keys."
+  },
+  {
+    "id": 53,
+    "id_text": "Saya memasukkan ponsel ke dalam saku.",
+    "en_text": "I put my phone in my pocket."
+  },
+  {
+    "id": 54,
+    "id_text": "Saya memakai kaos kaki.",
+    "en_text": "I put on my socks."
+  },
+  {
+    "id": 55,
+    "id_text": "Saya memakai sepatu.",
+    "en_text": "I put on my shoes."
+  },
+  {
+    "id": 56,
+    "id_text": "Saya mengikat tali sepatu dengan kencang.",
+    "en_text": "I tie my shoelaces tightly."
+  },
+  {
+    "id": 57,
+    "id_text": "Saya memakai jam tangan.",
+    "en_text": "I put on my wristwatch."
+  },
+  {
+    "id": 58,
+    "id_text": "Saya melihat ke cermin.",
+    "en_text": "I look in the mirror."
+  },
+  {
+    "id": 59,
+    "id_text": "Saya mengunci pintu depan.",
+    "en_text": "I lock the front door."
+  },
+  {
+    "id": 60,
+    "id_text": "Saya melangkah keluar dari rumah.",
+    "en_text": "I step out of my house."
+  },
+  {
+    "id": 61,
+    "id_text": "Saya berjalan ke halte bus.",
+    "en_text": "I walk to the bus stop."
+  },
+  {
+    "id": 62,
+    "id_text": "Saya menunggu bus pagi.",
+    "en_text": "I wait for the morning bus."
+  },
+  {
+    "id": 63,
+    "id_text": "Bus tiba tepat waktu.",
+    "en_text": "The bus arrives on time."
+  },
+  {
+    "id": 64,
+    "id_text": "Saya menempelkan kartu perjalanan saya.",
+    "en_text": "I tap my travel card."
+  },
+  {
+    "id": 65,
+    "id_text": "Saya menemukan kursi kosong di bus.",
+    "en_text": "I find an empty seat on the bus."
+  },
+  {
+    "id": 66,
+    "id_text": "Saya duduk dan mendengarkan musik.",
+    "en_text": "I sit down and listen to music."
+  },
+  {
+    "id": 67,
+    "id_text": "Saya mengendarai mobil ke tempat kerja.",
+    "en_text": "I drive my car to work."
+  },
+  {
+    "id": 68,
+    "id_text": "Saya menyalakan mesin.",
+    "en_text": "I start the engine."
+  },
+  {
+    "id": 69,
+    "id_text": "Saya mengatur kaca spion tengah.",
+    "en_text": "I adjust the rear-view mirror."
+  },
+  {
+    "id": 70,
+    "id_text": "Saya berhenti di lampu merah.",
+    "en_text": "I stop at the red light."
+  },
+  {
+    "id": 71,
+    "id_text": "Saya memarkir mobil di lahan parkir.",
+    "en_text": "I park my car in the parking lot."
+  },
+  {
+    "id": 72,
+    "id_text": "Saya mengendarai sepeda ke kampus.",
+    "en_text": "I ride my bicycle to campus."
+  },
+  {
+    "id": 73,
+    "id_text": "Saya mengunci sepeda di rak.",
+    "en_text": "I lock my bike to the rack."
+  },
+  {
+    "id": 74,
+    "id_text": "Saya tiba di kantor.",
+    "en_text": "I arrive at my office."
+  },
+  {
+    "id": 75,
+    "id_text": "Saya menyapa rekan kerja dengan senang hati.",
+    "en_text": "I greet my coworkers happily."
+  },
+  {
+    "id": 76,
+    "id_text": "Saya naik lift ke lantai tiga.",
+    "en_text": "I take the elevator to the third floor."
+  },
+  {
+    "id": 77,
+    "id_text": "Saya berjalan ke meja kerja saya.",
+    "en_text": "I walk to my desk."
+  },
+  {
+    "id": 78,
+    "id_text": "Saya duduk di kursi kantor saya.",
+    "en_text": "I sit in my office chair."
+  },
+  {
+    "id": 79,
+    "id_text": "Saya menyalakan komputer.",
+    "en_text": "I turn on my computer."
+  },
+  {
+    "id": 80,
+    "id_text": "Saya memasukkan kata sandi.",
+    "en_text": "I enter my password."
+  },
+  {
+    "id": 81,
+    "id_text": "Saya memeriksa kotak masuk email.",
+    "en_text": "I check my email inbox."
+  },
+  {
+    "id": 82,
+    "id_text": "Saya membaca pesan baru dengan saksama.",
+    "en_text": "I read new messages carefully."
+  },
+  {
+    "id": 83,
+    "id_text": "Saya membalas email mendesak.",
+    "en_text": "I reply to urgent emails."
+  },
+  {
+    "id": 84,
+    "id_text": "Saya menulis daftar tugas harian saya.",
+    "en_text": "I write down my daily task list."
+  },
+  {
+    "id": 85,
+    "id_text": "Saya memulai proyek pertama saya.",
+    "en_text": "I start my first project."
+  },
+  {
+    "id": 86,
+    "id_text": "Saya menghadiri rapat pagi.",
+    "en_text": "I attend a morning meeting."
+  },
+  {
+    "id": 87,
+    "id_text": "Saya mencatat selama presentasi.",
+    "en_text": "I take notes during the presentation."
+  },
+  {
+    "id": 88,
+    "id_text": "Saya membagikan ide dengan tim.",
+    "en_text": "I share my ideas with the team."
+  },
+  {
+    "id": 89,
+    "id_text": "Saya menjawab telepon kantor.",
+    "en_text": "I answer the office phone."
+  },
+  {
+    "id": 90,
+    "id_text": "Saya berbicara dengan klien.",
+    "en_text": "I talk to a client."
+  },
+  {
+    "id": 91,
+    "id_text": "Saya mencetak dokumen penting.",
+    "en_text": "I print out important documents."
+  },
+  {
+    "id": 92,
+    "id_text": "Saya menandatangani berkas resmi.",
+    "en_text": "I sign the official papers."
+  },
+  {
+    "id": 93,
+    "id_text": "Saya merapikan berkas di dalam map.",
+    "en_text": "I organize files in folders."
+  },
+  {
+    "id": 94,
+    "id_text": "Saya istirahat sejenak di pagi hari.",
+    "en_text": "I take a short morning break."
+  },
+  {
+    "id": 95,
+    "id_text": "Saya mengisi botol air minum saya.",
+    "en_text": "I fill my water bottle."
+  },
+  {
+    "id": 96,
+    "id_text": "Saya menyantap camilan sehat kecil.",
+    "en_text": "I eat a small healthy snack."
+  },
+  {
+    "id": 97,
+    "id_text": "Saya melanjutkan pekerjaan saya.",
+    "en_text": "I continue my work."
+  },
+  {
+    "id": 98,
+    "id_text": "Saya menyelesaikan masalah yang sulit.",
+    "en_text": "I solve a difficult problem."
+  },
+  {
+    "id": 99,
+    "id_text": "Jam menunjukkan pukul dua belas siang.",
+    "en_text": "Clock strikes twelve noon."
+  },
+  {
+    "id": 100,
+    "id_text": "Waktunya untuk makan siang.",
+    "en_text": "It is time for lunch."
+  },
+  {
+    "id": 101,
+    "id_text": "Saya berjalan ke kantin.",
+    "en_text": "I walk to the cafeteria."
+  },
+  {
+    "id": 102,
+    "id_text": "Saya memesan salad segar dan sup.",
+    "en_text": "I order a fresh salad and soup."
+  },
+  {
+    "id": 103,
+    "id_text": "Saya duduk bersama teman-teman saya.",
+    "en_text": "I sit with my friends."
+  },
+  {
+    "id": 104,
+    "id_text": "Kami berbincang tentang rencana akhir pekan.",
+    "en_text": "We talk about our weekend plans."
+  },
+  {
+    "id": 105,
+    "id_text": "Kami tertawa mendengar cerita lucu.",
+    "en_text": "We laugh at a funny story."
+  },
+  {
+    "id": 106,
+    "id_text": "Saya menghabiskan makan siang saya.",
+    "en_text": "I finish my lunch."
+  },
+  {
+    "id": 107,
+    "id_text": "Saya membuang sampah.",
+    "en_text": "I throw away the trash."
+  },
+  {
+    "id": 108,
+    "id_text": "Saya berjalan-jalan sebentar di luar.",
+    "en_text": "I take a short walk outside."
+  },
+  {
+    "id": 109,
+    "id_text": "Saya menghirup udara segar.",
+    "en_text": "I get fresh air."
+  },
+  {
+    "id": 110,
+    "id_text": "Saya kembali ke tempat kerja saya.",
+    "en_text": "I return to my workstation."
+  },
+  {
+    "id": 111,
+    "id_text": "Saya meninjau tugas sore saya.",
+    "en_text": "I review my afternoon tasks."
+  },
+  {
+    "id": 112,
+    "id_text": "Saya mengetik laporan resmi.",
+    "en_text": "I type a formal report."
+  },
+  {
+    "id": 113,
+    "id_text": "Saya memeriksa ulang perhitungan saya.",
+    "en_text": "I double-check my calculations."
+  },
+  {
+    "id": 114,
+    "id_text": "Saya mengirim berkas proyek.",
+    "en_text": "I send the project files."
+  },
+  {
+    "id": 115,
+    "id_text": "Saya mengikuti panggilan daring di sore hari.",
+    "en_text": "I attend an afternoon online call."
+  },
+  {
+    "id": 116,
+    "id_text": "Saya mematikan suara mikrofon saya.",
+    "en_text": "I mute my microphone."
+  },
+  {
+    "id": 117,
+    "id_text": "Saya menyalakan kamera web saya.",
+    "en_text": "I turn on my webcam."
+  },
+  {
+    "id": 118,
+    "id_text": "Saya mengajukan pertanyaan.",
+    "en_text": "I ask a question."
+  },
+  {
+    "id": 119,
+    "id_text": "Saya menyelesaikan tugas harian saya.",
+    "en_text": "I complete my daily assignments."
+  },
+  {
+    "id": 120,
+    "id_text": "Saya merapikan meja kerja saya.",
+    "en_text": "I clean up my desk."
+  },
+  {
+    "id": 121,
+    "id_text": "Saya menyimpan berkas komputer saya.",
+    "en_text": "I save my computer files."
+  },
+  {
+    "id": 122,
+    "id_text": "Saya mematikan komputer saya.",
+    "en_text": "I shut down my computer."
+  },
+  {
+    "id": 123,
+    "id_text": "Jam kerja selesai pada pukul lima.",
+    "en_text": "Work finishes at five."
+  },
+  {
+    "id": 124,
+    "id_text": "Saya mengucapkan selamat tinggal pada rekan kerja.",
+    "en_text": "I say goodbye to my colleagues."
+  },
+  {
+    "id": 125,
+    "id_text": "Saya berjalan keluar gedung.",
+    "en_text": "I walk out of the building."
+  },
+  {
+    "id": 126,
+    "id_text": "Saya pulang ke rumah.",
+    "en_text": "I head home."
+  },
+  {
+    "id": 127,
+    "id_text": "Saya masuk ke stasiun kereta.",
+    "en_text": "I enter the train station."
+  },
+  {
+    "id": 128,
+    "id_text": "Saya naik kereta sore.",
+    "en_text": "I board the evening train."
+  },
+  {
+    "id": 129,
+    "id_text": "Saya berpegangan pada pegangan tangan.",
+    "en_text": "I hold onto the handrail."
+  },
+  {
+    "id": 130,
+    "id_text": "Saya turun di stasiun saya.",
+    "en_text": "I get off at my station."
+  },
+  {
+    "id": 131,
+    "id_text": "Saya mampir ke toko kelontong.",
+    "en_text": "I stop by the grocery store."
+  },
+  {
+    "id": 132,
+    "id_text": "Saya membeli sayuran dan buah segar.",
+    "en_text": "I buy fresh vegetables and fruit."
+  },
+  {
+    "id": 133,
+    "id_text": "Saya membayar di kasir.",
+    "en_text": "I pay at the checkout counter."
+  },
+  {
+    "id": 134,
+    "id_text": "Saya membawa kantong belanja.",
+    "en_text": "I carry the shopping bags."
+  },
+  {
+    "id": 135,
+    "id_text": "Saya tiba kembali di rumah.",
+    "en_text": "I arrive back home."
+  },
+  {
+    "id": 136,
+    "id_text": "Saya membuka kunci pintu.",
+    "en_text": "I unlock the door."
+  },
+  {
+    "id": 137,
+    "id_text": "Saya melepas sepatu saya.",
+    "en_text": "I take off my shoes."
+  },
+  {
+    "id": 138,
+    "id_text": "Saya meletakkan sepatu di rak.",
+    "en_text": "I put my shoes on the rack."
+  },
+  {
+    "id": 139,
+    "id_text": "Saya menggantung jaket saya.",
+    "en_text": "I hang up my jacket."
+  },
+  {
+    "id": 140,
+    "id_text": "Saya mencuci tangan sampai bersih.",
+    "en_text": "I wash my hands thoroughly."
+  },
+  {
+    "id": 141,
+    "id_text": "Saya berganti pakaian rumah yang nyaman.",
+    "en_text": "I change into comfortable home clothes."
+  },
+  {
+    "id": 142,
+    "id_text": "Saya memberi makan hewan peliharaan saya.",
+    "en_text": "I feed my pet."
+  },
+  {
+    "id": 143,
+    "id_text": "Saya beristirahat di sofa sebentar.",
+    "en_text": "I rest on the sofa for a bit."
+  },
+  {
+    "id": 144,
+    "id_text": "Saya menyiapkan makan malam di dapur.",
+    "en_text": "I prepare dinner in the kitchen."
+  },
+  {
+    "id": 145,
+    "id_text": "Saya memotong bawang merah dan bawang putih.",
+    "en_text": "I chop onions and garlic."
+  },
+  {
+    "id": 146,
+    "id_text": "Saya merebus pasta di panci besar.",
+    "en_text": "I boil pasta in a big pot."
+  },
+  {
+    "id": 147,
+    "id_text": "Saya mengaduk saus di atas kompor.",
+    "en_text": "I stir the sauce on the stove."
+  },
+  {
+    "id": 148,
+    "id_text": "Saya menata meja makan.",
+    "en_text": "I set the dining table."
+  },
+  {
+    "id": 149,
+    "id_text": "Saya menata piring dan alat makan.",
+    "en_text": "I place plates and cutlery."
+  },
+  {
+    "id": 150,
+    "id_text": "Saya duduk untuk makan malam.",
+    "en_text": "I sit down for dinner."
+  },
+  {
+    "id": 151,
+    "id_text": "Saya menikmati makanan hangat bersama keluarga.",
+    "en_text": "I enjoy a warm meal with family."
+  },
+  {
+    "id": 152,
+    "id_text": "Saya minum segelas jus segar.",
+    "en_text": "I drink a glass of fresh juice."
+  },
+  {
+    "id": 153,
+    "id_text": "Saya membersihkan piring dari meja.",
+    "en_text": "I clear the dishes from the table."
+  },
+  {
+    "id": 154,
+    "id_text": "Saya mencuci piring dengan sabun.",
+    "en_text": "I wash the dishes with soap."
+  },
+  {
+    "id": 155,
+    "id_text": "Saya mengeringkan meja dapur dengan kain.",
+    "en_text": "I dry the counter with a cloth."
+  },
+  {
+    "id": 156,
+    "id_text": "Saya mengeluarkan kantong sampah.",
+    "en_text": "I take out the trash bag."
+  },
+  {
+    "id": 157,
+    "id_text": "Saya menyiram tanaman di teras.",
+    "en_text": "I water the plants on the porch."
+  },
+  {
+    "id": 158,
+    "id_text": "Saya menyapu lantai ruang tamu.",
+    "en_text": "I sweep the living room floor."
+  },
+  {
+    "id": 159,
+    "id_text": "Saya menyalakan televisi.",
+    "en_text": "I turn on the television."
+  },
+  {
+    "id": 160,
+    "id_text": "Saya menonton acara favorit saya.",
+    "en_text": "I watch my favorite show."
+  },
+  {
+    "id": 161,
+    "id_text": "Saya membaca satu bab dari buku.",
+    "en_text": "I read a chapter of a book."
+  },
+  {
+    "id": 162,
+    "id_text": "Saya mendengarkan musik yang menenangkan.",
+    "en_text": "I listen to relaxing music."
+  },
+  {
+    "id": 163,
+    "id_text": "Saya berlatih bermain gitar.",
+    "en_text": "I practice playing the guitar."
+  },
+  {
+    "id": 164,
+    "id_text": "Saya mengobrol dengan teman di telepon.",
+    "en_text": "I chat with my friend on the phone."
+  },
+  {
+    "id": 165,
+    "id_text": "Saya memeriksa umpan media sosial saya.",
+    "en_text": "I check my social media feed."
+  },
+  {
+    "id": 166,
+    "id_text": "Saya membalas pesan pribadi.",
+    "en_text": "I reply to personal messages."
+  },
+  {
+    "id": 167,
+    "id_text": "Saya minum secangkir teh kamomil hangat.",
+    "en_text": "I drink a warm cup of chamomile tea."
+  },
+  {
+    "id": 168,
+    "id_text": "Saya meregangkan otot dengan lembut.",
+    "en_text": "I stretch my muscles gently."
+  },
+  {
+    "id": 169,
+    "id_text": "Saya memeriksa ulang jadwal besok.",
+    "en_text": "I double-check tomorrow's schedule."
+  },
+  {
+    "id": 170,
+    "id_text": "Saya menyiapkan pakaian untuk besok.",
+    "en_text": "I set my outfit for tomorrow."
+  },
+  {
+    "id": 171,
+    "id_text": "Saya mengunci semua pintu luar.",
+    "en_text": "I lock all the exterior doors."
+  },
+  {
+    "id": 172,
+    "id_text": "Saya menutup tirai jendela.",
+    "en_text": "I close the window blinds."
+  },
+  {
+    "id": 173,
+    "id_text": "Saya mematikan lampu utama rumah.",
+    "en_text": "I turn off the main house lights."
+  },
+  {
+    "id": 174,
+    "id_text": "Saya membiarkan lampu malam menyala di lorong.",
+    "en_text": "I leave a nightlight on in the hallway."
+  },
+  {
+    "id": 175,
+    "id_text": "Saya berjalan ke kamar tidur saya.",
+    "en_text": "I walk to my bedroom."
+  },
+  {
+    "id": 176,
+    "id_text": "Saya mencolokkan pengisi daya ponsel saya.",
+    "en_text": "I plug in my phone charger."
+  },
+  {
+    "id": 177,
+    "id_text": "Saya memasang alarm untuk jam enam pagi.",
+    "en_text": "I set my alarm for six in the morning."
+  },
+  {
+    "id": 178,
+    "id_text": "Saya mengaktifkan mode hening pada ponsel.",
+    "en_text": "I put my phone on silent mode."
+  },
+  {
+    "id": 179,
+    "id_text": "Saya berganti pakaian piyama.",
+    "en_text": "I change into my pajamas."
+  },
+  {
+    "id": 180,
+    "id_text": "Saya pergi ke kamar mandi.",
+    "en_text": "I go to the bathroom."
+  },
+  {
+    "id": 181,
+    "id_text": "Saya mencuci muka dengan lembut.",
+    "en_text": "I wash my face gently."
+  },
+  {
+    "id": 182,
+    "id_text": "Saya menggosok gigi sampai bersih.",
+    "en_text": "I brush my teeth thoroughly."
+  },
+  {
+    "id": 183,
+    "id_text": "Saya memakai krim malam pada wajah.",
+    "en_text": "I apply night cream on my face."
+  },
+  {
+    "id": 184,
+    "id_text": "Saya mematikan lampu kamar mandi.",
+    "en_text": "I turn off the bathroom light."
+  },
+  {
+    "id": 185,
+    "id_text": "Saya berjalan kembali ke tempat tidur.",
+    "en_text": "I walk back to my bed."
+  },
+  {
+    "id": 186,
+    "id_text": "Saya membuka selimut tempat tidur.",
+    "en_text": "I pull back the bed blanket."
+  },
+  {
+    "id": 187,
+    "id_text": "Saya naik ke tempat tidur.",
+    "en_text": "I climb into bed."
+  },
+  {
+    "id": 188,
+    "id_text": "Saya meletakkan kepala di atas bantal.",
+    "en_text": "I lay my head on the pillow."
+  },
+  {
+    "id": 189,
+    "id_text": "Saya menarik selimut ke atas bahu.",
+    "en_text": "I pull the blanket over my shoulders."
+  },
+  {
+    "id": 190,
+    "id_text": "Saya menggapai lampu tidur.",
+    "en_text": "I reach over to the bedside lamp."
+  },
+  {
+    "id": 191,
+    "id_text": "Saya mematikan lampu tidur.",
+    "en_text": "I turn off the bedside lamp."
+  },
+  {
+    "id": 192,
+    "id_text": "Kamar tidur menjadi gelap dan tenang.",
+    "en_text": "The bedroom becomes dark and quiet."
+  },
+  {
+    "id": 193,
+    "id_text": "Saya memejamkan mata.",
+    "en_text": "I close my eyes."
+  },
+  {
+    "id": 194,
+    "id_text": "Saya menarik napas dalam-dalam.",
+    "en_text": "I take a deep breath."
+  },
+  {
+    "id": 195,
+    "id_text": "Saya mengembuskan napas perlahan.",
+    "en_text": "I exhale slowly."
+  },
+  {
+    "id": 196,
+    "id_text": "Saya merilekskan tubuh sepenuhnya.",
+    "en_text": "I relax my body completely."
+  },
+  {
+    "id": 197,
+    "id_text": "Saya membersihkan pikiran dari segala beban.",
+    "en_text": "I clear my mind of all thoughts."
+  },
+  {
+    "id": 198,
+    "id_text": "Saya merasa sangat mengantuk.",
+    "en_text": "I feel very sleepy."
+  },
+  {
+    "id": 199,
+    "id_text": "Saya mulai tertidur lelap.",
+    "en_text": "I drift off to sleep."
+  },
+  {
+    "id": 200,
+    "id_text": "Saya tidur nyenyak sepanjang malam.",
+    "en_text": "I sleep peacefully all night."
+  }
+];
+
+    let currentIndex = 0;
+    let isTranslated = false;
+
+    const counterEl = document.getElementById("card-counter");
+    const percentEl = document.getElementById("percent-indicator");
+    const progressFillEl = document.getElementById("progress-fill");
+    const tagEl = document.getElementById("card-tag");
+    const textIdEl = document.getElementById("text-id");
+    const textEnEl = document.getElementById("text-en");
+    const placeholderEl = document.getElementById("text-placeholder");
+    const audioBtnEl = document.getElementById("audio-btn");
+    const translateBtnEl = document.getElementById("translate-btn");
+    const prevBtnEl = document.getElementById("prev-btn");
+
+    function updateCard() {
+      const current = sentences[currentIndex];
+      tagEl.textContent = "Kalimat #" + current.id;
+      counterEl.textContent = (currentIndex + 1);
+      
+      const percent = Math.round(((currentIndex + 1) / sentences.length) * 100);
+      percentEl.textContent = percent + "%";
+      progressFillEl.style.width = percent + "%";
+
+      textIdEl.textContent = current.id_text;
+      textEnEl.textContent = current.en_text;
+
+      // Reset translation state
+      isTranslated = false;
+      textEnEl.style.display = "none";
+      audioBtnEl.style.display = "none";
+      placeholderEl.style.display = "block";
+      translateBtnEl.style.display = "block";
+      translateBtnEl.textContent = "Terjemahkan";
+
+      prevBtnEl.disabled = currentIndex === 0;
+      prevBtnEl.style.opacity = currentIndex === 0 ? "0.4" : "1";
+    }
+
+    function showTranslation() {
+      if (!isTranslated) {
+        isTranslated = true;
+        placeholderEl.style.display = "none";
+        textEnEl.style.display = "block";
+        audioBtnEl.style.display = "inline-flex";
+        translateBtnEl.textContent = "Sudah Diterjemahkan";
+        translateBtnEl.style.backgroundColor = "#10b981";
+      }
+    }
+
+    function nextCard() {
+      if (currentIndex < sentences.length - 1) {
+        currentIndex++;
+      } else {
+        currentIndex = 0; // Loop kembali ke awal
+      }
+      translateBtnEl.style.backgroundColor = "var(--primary)";
+      updateCard();
+    }
+
+    function prevCard() {
+      if (currentIndex > 0) {
+        currentIndex--;
+        translateBtnEl.style.backgroundColor = "var(--primary)";
+        updateCard();
+      }
+    }
+
+    function shuffleCards() {
+      for (let i = sentences.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [sentences[i], sentences[j]] = [sentences[j], sentences[i]];
+      }
+      currentIndex = 0;
+      translateBtnEl.style.backgroundColor = "var(--primary)";
+      updateCard();
+    }
+
+    function playAudio() {
+      if ("speechSynthesis" in window) {
+        const utterance = new SpeechSynthesisUtterance(sentences[currentIndex].en_text);
+        utterance.lang = "en-US";
+        utterance.rate = 0.9;
+        window.speechSynthesis.speak(utterance);
+      }
+    }
+
+    // Dukungan navigasi keyboard (desktop/laptop)
+    document.addEventListener("keydown", function(e) {
+      if (e.code === "Space") {
+        e.preventDefault();
+        showTranslation();
+      } else if (e.code === "ArrowRight") {
+        nextCard();
+      } else if (e.code === "ArrowLeft") {
+        prevCard();
+      }
+    });
+
+    // Swipe gesture support on smartphone
+    let touchstartX = 0;
+    let touchendX = 0;
+    const cardEl = document.getElementById("card");
+
+    cardEl.addEventListener("touchstart", function(e) {
+      touchstartX = e.changedTouches[0].screenX;
+    }, false);
+
+    cardEl.addEventListener("touchend", function(e) {
+      touchendX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }, false);
+
+    function handleSwipe() {
+      if (touchendX < touchstartX - 50) {
+        nextCard(); // Geser ke kiri untuk Next
+      }
+      if (touchendX > touchstartX + 50) {
+        prevCard(); // Geser ke kanan untuk Prev
+      }
+    }
+
+    // Inisialisasi awal
+    updateCard();
+  </script>
+</body>
+</html>
