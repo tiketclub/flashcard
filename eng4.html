@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>English Flashcards - Productive Verbs</title>
+  <script type="text/javascript" src="https://me.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=JxOqh6g9ssMHJZKhuSGfDUyAUZvde8g5cpHZ2NfXaXf01vy5BXVlzRD_em5ZZaOp2U-Wlf32l4hwrzVzxqh3zH7VESV9bNZhzGFKH0oW2LdfOTzHmt2BhXbDgVdC2qMn44KNiYMkW6lqUwaglE9Cu1SiCUXSUcubFM7mSEoFyS9Q5wYbR8cv5YXm2PqEn8laIVlE6o1xePmibSbT51iWCor2FlV4j0Rk9Gqk0iiQ4KkCLLk84BhsoVOjXDFqHglv2YNC33MoaPqxTw66DECVLk8LDLuXZu_Ozr4anh3M1FxwQteyV5EL0HH5E0QAig_yvMQBtKOrOaTyEsVVdv9mm7tv88SWZuwHP4_BNNSRf3s" charset="UTF-8"></script><style>
+    :root {
+      --primary: #c026d3;
+      --primary-dark: #a21caf;
+      --primary-light: #fae8ff;
+      --accent: #10b981;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 100vh;
+      padding: 16px;
+      line-height: 1.5;
+    }
+
+    header {
+      width: 100%;
+      max-width: 480px;
+      text-align: center;
+      margin-top: 8px;
+      margin-bottom: 12px;
+    }
+
+    header h1 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      letter-spacing: -0.02em;
+    }
+
+    header p {
+      font-size: 0.825rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .progress-wrapper {
+      width: 100%;
+      max-width: 480px;
+      margin-bottom: 16px;
+    }
+
+    .progress-info {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .progress-bar-bg {
+      width: 100%;
+      height: 8px;
+      background-color: var(--border);
+      border-radius: 9999px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 1%;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      border-radius: 9999px;
+      transition: width 0.3s ease;
+    }
+
+    .flashcard-container {
+      width: 100%;
+      max-width: 480px;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .flashcard {
+      width: 100%;
+      min-height: 280px;
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .card-badge {
+      align-self: flex-start;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 4px 10px;
+      border-radius: 8px;
+      background-color: var(--primary-light);
+      color: var(--primary);
+    }
+
+    .content-section {
+      margin: 20px 0;
+      text-align: center;
+    }
+
+    .label-lang {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    .sentence-id {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 16px;
+      line-height: 1.4;
+    }
+
+    .divider {
+      height: 1px;
+      background-color: var(--border);
+      margin: 14px 0;
+    }
+
+    .sentence-en-box {
+      min-height: 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .sentence-en {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      line-height: 1.4;
+      display: none;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .audio-btn {
+      display: none;
+      margin-top: 10px;
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 9999px;
+      padding: 6px 14px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .audio-btn:active {
+      background-color: var(--primary-light);
+      color: var(--primary);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .placeholder-en {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .controls-wrapper {
+      width: 100%;
+      max-width: 480px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .btn-main {
+      width: 100%;
+      padding: 15px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 14px;
+      background-color: var(--primary);
+      color: #ffffff;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(192, 38, 211, 0.25);
+      transition: all 0.2s ease;
+    }
+
+    .btn-main:active {
+      background-color: var(--primary-dark);
+      transform: scale(0.98);
+    }
+
+    .nav-buttons {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 10px;
+    }
+
+    .btn-secondary {
+      padding: 14px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background-color: #ffffff;
+      color: var(--text-main);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-secondary:active {
+      background-color: #f1f5f9;
+      transform: scale(0.98);
+    }
+
+    .btn-next {
+      background-color: #0f172a;
+      color: #ffffff;
+      border: none;
+    }
+
+    .btn-next:active {
+      background-color: #334155;
+    }
+
+    .btn-shuffle {
+      margin-top: 4px;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      cursor: pointer;
+      text-decoration: underline;
+      padding: 6px;
+    }
+
+    footer {
+      margin-top: 12px;
+      font-size: 0.75rem;
+      color: #94a3b8;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>English Flashcards</h1>
+    <p>Productive Verbs - 100 Kalimat Kerja Utama</p>
+  </header>
+
+  <div class="progress-wrapper">
+    <div class="progress-info">
+      <span>Nomor: <strong id="card-counter">1</strong> / 100</span>
+      <span id="percent-indicator">1%</span>
+    </div>
+    <div class="progress-bar-bg">
+      <div class="progress-bar-fill" id="progress-fill"></div>
+    </div>
+  </div>
+
+  <div class="flashcard-container">
+    <div class="flashcard" id="card">
+      <span class="card-badge" id="card-tag">Kalimat #1</span>
+
+      <div class="content-section">
+        <div class="label-lang">Bahasa Indonesia</div>
+        <div class="sentence-id" id="text-id">Saya bangun tidur lebih awal setiap hari.</div>
+
+        <div class="divider"></div>
+
+        <div class="label-lang">Bahasa Inggris</div>
+        <div class="sentence-en-box">
+          <div class="sentence-en" id="text-en">I get up early every day.</div>
+          <div class="placeholder-en" id="text-placeholder">Klik tombol "Terjemahkan" untuk melihat jawaban</div>
+          <button class="audio-btn" id="audio-btn" onclick="playAudio()">🔊 Dengarkan Audio</button>
+        </div>
+      </div>
+
+      <div></div>
+    </div>
+  </div>
+
+  <div class="controls-wrapper">
+    <button class="btn-main" id="translate-btn" onclick="showTranslation()">Terjemahkan</button>
+
+    <div class="nav-buttons">
+      <button class="btn-secondary" id="prev-btn" onclick="prevCard()">Kembali</button>
+      <button class="btn-secondary btn-next" id="next-btn" onclick="nextCard()">Next &rarr;</button>
+    </div>
+
+    <button class="btn-shuffle" onclick="shuffleCards()">Acak Urutan Kalimat</button>
+  </div>
+
+  <footer>
+    Tampilan optimal untuk smartphone. Dapat dipelajari kapan saja.
+  </footer>
+
+  <script>
+    const sentences = [
+  {
+    "id": 1,
+    "id_text": "Saya bangun tidur lebih awal setiap hari.",
+    "en_text": "I get up early every day."
+  },
+  {
+    "id": 2,
+    "id_text": "Apakah Anda menerima pesan saya?",
+    "en_text": "Did you get my message?"
+  },
+  {
+    "id": 3,
+    "id_text": "Tolong bersiap-siap sekarang.",
+    "en_text": "Please get ready now."
+  },
+  {
+    "id": 4,
+    "id_text": "Dia sampai di rumah sekitar jam tujuh.",
+    "en_text": "He gets home around seven."
+  },
+  {
+    "id": 5,
+    "id_text": "Bagaimana cara saya sampai ke stasiun?",
+    "en_text": "How do I get to the station?"
+  },
+  {
+    "id": 6,
+    "id_text": "Saya akrab dengan tim saya.",
+    "en_text": "I get along with my team."
+  },
+  {
+    "id": 7,
+    "id_text": "Kembalilah bekerja.",
+    "en_text": "Get back to work."
+  },
+  {
+    "id": 8,
+    "id_text": "Saya perlu beristirahat.",
+    "en_text": "I need to get some rest."
+  },
+  {
+    "id": 9,
+    "id_text": "Mari kita turun dari bus.",
+    "en_text": "Let us get off the bus."
+  },
+  {
+    "id": 10,
+    "id_text": "Saya memahami maksud Anda sekarang.",
+    "en_text": "I get your point now."
+  },
+  {
+    "id": 11,
+    "id_text": "Silakan duduk.",
+    "en_text": "Take a seat, please."
+  },
+  {
+    "id": 12,
+    "id_text": "Saya mandi setiap pagi.",
+    "en_text": "I take a shower every morning."
+  },
+  {
+    "id": 13,
+    "id_text": "Tolong tarik napas dalam-dalam.",
+    "en_text": "Please take a deep breath."
+  },
+  {
+    "id": 14,
+    "id_text": "Luangkan waktu Anda untuk hal ini.",
+    "en_text": "Take your time with this."
+  },
+  {
+    "id": 15,
+    "id_text": "Dia merawat kucingnya.",
+    "en_text": "She takes care of her cat."
+  },
+  {
+    "id": 16,
+    "id_text": "Lepaskan sepatu Anda di sini.",
+    "en_text": "Take off your shoes here."
+  },
+  {
+    "id": 17,
+    "id_text": "Saya perlu istirahat sebentar.",
+    "en_text": "I need to take a break."
+  },
+  {
+    "id": 18,
+    "id_text": "Ini membutuhkan waktu dua puluh menit.",
+    "en_text": "It takes twenty minutes."
+  },
+  {
+    "id": 19,
+    "id_text": "Lihatlah dokumen ini.",
+    "en_text": "Take a look at this document."
+  },
+  {
+    "id": 20,
+    "id_text": "Jangan masukkan itu ke dalam hati.",
+    "en_text": "Do not take it personally."
+  },
+  {
+    "id": 21,
+    "id_text": "Saya membuat kopi setiap pagi.",
+    "en_text": "I make coffee every morning."
+  },
+  {
+    "id": 22,
+    "id_text": "Itu masuk akal bagi saya.",
+    "en_text": "That makes sense to me."
+  },
+  {
+    "id": 23,
+    "id_text": "Kami membuat keputusan akhir.",
+    "en_text": "We made a final decision."
+  },
+  {
+    "id": 24,
+    "id_text": "Jangan membuat kesalahan.",
+    "en_text": "Do not make a mistake."
+  },
+  {
+    "id": 25,
+    "id_text": "Anggap rumah sendiri.",
+    "en_text": "Make yourself at home."
+  },
+  {
+    "id": 26,
+    "id_text": "Saya akan melakukan panggilan telepon.",
+    "en_text": "I will make a phone call."
+  },
+  {
+    "id": 27,
+    "id_text": "Pastikan pintunya terkunci.",
+    "en_text": "Make sure the door is locked."
+  },
+  {
+    "id": 28,
+    "id_text": "Kita perlu membuat kemajuan.",
+    "en_text": "We need to make progress."
+  },
+  {
+    "id": 29,
+    "id_text": "Saya merapikan tempat tidur saya setiap pagi.",
+    "en_text": "I make my bed every morning."
+  },
+  {
+    "id": 30,
+    "id_text": "Saya akan membuat janji temu.",
+    "en_text": "I will make an appointment."
+  },
+  {
+    "id": 31,
+    "id_text": "Semoga hari Anda menyenangkan!",
+    "en_text": "Have a nice day!"
+  },
+  {
+    "id": 32,
+    "id_text": "Saya sakit kepala hari ini.",
+    "en_text": "I have a headache today."
+  },
+  {
+    "id": 33,
+    "id_text": "Apakah Anda punya pertanyaan?",
+    "en_text": "Do you have any questions?"
+  },
+  {
+    "id": 34,
+    "id_text": "Saya tidak punya pilihan sekarang.",
+    "en_text": "I have no choice now."
+  },
+  {
+    "id": 35,
+    "id_text": "Semoga perjalanan Anda aman.",
+    "en_text": "Have a safe journey."
+  },
+  {
+    "id": 36,
+    "id_text": "Kami ada rapat jam tiga.",
+    "en_text": "We have a meeting at three."
+  },
+  {
+    "id": 37,
+    "id_text": "Bersenang-senanglah di pesta!",
+    "en_text": "Have fun at the party!"
+  },
+  {
+    "id": 38,
+    "id_text": "Saya punya waktu untuk berbicara sekarang.",
+    "en_text": "I have time to talk now."
+  },
+  {
+    "id": 39,
+    "id_text": "Saya memiliki jadwal padat hari ini.",
+    "en_text": "I have a busy schedule today."
+  },
+  {
+    "id": 40,
+    "id_text": "Silakan duduk.",
+    "en_text": "Have a seat, please."
+  },
+  {
+    "id": 41,
+    "id_text": "Saya pulang ke rumah setelah bekerja.",
+    "en_text": "I go home after work."
+  },
+  {
+    "id": 42,
+    "id_text": "Mari kita pergi berbelanja bersama.",
+    "en_text": "Let us go shopping together."
+  },
+  {
+    "id": 43,
+    "id_text": "Waktu berlalu begitu cepat.",
+    "en_text": "Time goes by so fast."
+  },
+  {
+    "id": 44,
+    "id_text": "Dia tidur lebih awal.",
+    "en_text": "She goes to bed early."
+  },
+  {
+    "id": 45,
+    "id_text": "Semuanya berjalan lancar.",
+    "en_text": "Everything goes smoothly."
+  },
+  {
+    "id": 46,
+    "id_text": "Jalan lurus dan belok kiri.",
+    "en_text": "Go straight and turn left."
+  },
+  {
+    "id": 47,
+    "id_text": "Silakan lanjut terlebih dahulu.",
+    "en_text": "Please go ahead first."
+  },
+  {
+    "id": 48,
+    "id_text": "Mari kita keluar untuk makan malam.",
+    "en_text": "Let us go out for dinner."
+  },
+  {
+    "id": 49,
+    "id_text": "Lanjutkan pidato Anda.",
+    "en_text": "Go on with your speech."
+  },
+  {
+    "id": 50,
+    "id_text": "Mari kita pulang sekarang.",
+    "en_text": "Let us go home now."
+  },
+  {
+    "id": 51,
+    "id_text": "Masuk dan duduklah.",
+    "en_text": "Come in and sit down."
+  },
+  {
+    "id": 52,
+    "id_text": "Tolong segera kembali.",
+    "en_text": "Please come back soon."
+  },
+  {
+    "id": 53,
+    "id_text": "Impian menjadi kenyataan dengan usaha.",
+    "en_text": "Dreams come true with effort."
+  },
+  {
+    "id": 54,
+    "id_text": "Dia berasal dari Jakarta.",
+    "en_text": "She comes from Jakarta."
+  },
+  {
+    "id": 55,
+    "id_text": "Ayo, kita terlambat!",
+    "en_text": "Come on, we are late!"
+  },
+  {
+    "id": 56,
+    "id_text": "Dia pulang terlambat tadi malam.",
+    "en_text": "He came home late last night."
+  },
+  {
+    "id": 57,
+    "id_text": "Ayo bergabung dengan kami untuk minum kopi.",
+    "en_text": "Come join us for coffee."
+  },
+  {
+    "id": 58,
+    "id_text": "Bus datang tepat waktu.",
+    "en_text": "The bus came on time."
+  },
+  {
+    "id": 59,
+    "id_text": "Kemari sebentar.",
+    "en_text": "Come here for a second."
+  },
+  {
+    "id": 60,
+    "id_text": "Silakan ikut bersama kami.",
+    "en_text": "Feel free to come along."
+  },
+  {
+    "id": 61,
+    "id_text": "Jangan pernah menyerah pada impian Anda.",
+    "en_text": "Never give up on your goals."
+  },
+  {
+    "id": 62,
+    "id_text": "Tolong bantu saya di sini.",
+    "en_text": "Please give me a hand here."
+  },
+  {
+    "id": 63,
+    "id_text": "Telepon saya nanti malam.",
+    "en_text": "Give me a call later tonight."
+  },
+  {
+    "id": 64,
+    "id_text": "Saya akan memberi Anda tumpangan pulang.",
+    "en_text": "I will give you a ride home."
+  },
+  {
+    "id": 65,
+    "id_text": "Baca dokumen ini sebentar.",
+    "en_text": "Give this document a quick read."
+  },
+  {
+    "id": 66,
+    "id_text": "Berikan saya masukan Anda yang jujur.",
+    "en_text": "Give me your honest feedback."
+  },
+  {
+    "id": 67,
+    "id_text": "Berikan prioritas pada tugas yang mendesak.",
+    "en_text": "Give priority to urgent tasks."
+  },
+  {
+    "id": 68,
+    "id_text": "Jangan membagikan data pribadi.",
+    "en_text": "Do not give out private data."
+  },
+  {
+    "id": 69,
+    "id_text": "Berikan dia kesempatan lagi.",
+    "en_text": "Give him another chance."
+  },
+  {
+    "id": 70,
+    "id_text": "Saya memberikan dukungan penuh.",
+    "en_text": "I give my full support."
+  },
+  {
+    "id": 71,
+    "id_text": "Tetap tenang dan tetap fokus.",
+    "en_text": "Keep calm and stay focused."
+  },
+  {
+    "id": 72,
+    "id_text": "Pertahankan kerja bagus ini!",
+    "en_text": "Keep up the good work!"
+  },
+  {
+    "id": 73,
+    "id_text": "Tolong jaga ruangan tetap bersih.",
+    "en_text": "Please keep the room clean."
+  },
+  {
+    "id": 74,
+    "id_text": "Saya selalu menepati janji.",
+    "en_text": "I keep my promises always."
+  },
+  {
+    "id": 75,
+    "id_text": "Tetap berhubungan dengan teman lama.",
+    "en_text": "Keep in touch with old friends."
+  },
+  {
+    "id": 76,
+    "id_text": "Jaga rahasia ini di antara kita.",
+    "en_text": "Keep this secret between us."
+  },
+  {
+    "id": 77,
+    "id_text": "Tolong pelankan suara Anda.",
+    "en_text": "Please keep your voice down."
+  },
+  {
+    "id": 78,
+    "id_text": "Saya mencatat pengeluaran saya.",
+    "en_text": "I keep track of my expenses."
+  },
+  {
+    "id": 79,
+    "id_text": "Tetap berlatih setiap hari.",
+    "en_text": "Keep practicing every single day."
+  },
+  {
+    "id": 80,
+    "id_text": "Saya akan terus memberi Anda informasi terbaru.",
+    "en_text": "I will keep you updated."
+  },
+  {
+    "id": 81,
+    "id_text": "Pakailah mantel tebal Anda.",
+    "en_text": "Put on your heavy coat."
+  },
+  {
+    "id": 82,
+    "id_text": "Letakkan sepatu Anda di rak.",
+    "en_text": "Put your shoes on the rack."
+  },
+  {
+    "id": 83,
+    "id_text": "Jangan menunda hingga besok.",
+    "en_text": "Never put off until tomorrow."
+  },
+  {
+    "id": 84,
+    "id_text": "Kembalikan buku-buku ke rak.",
+    "en_text": "Put the books back on shelf."
+  },
+  {
+    "id": 85,
+    "id_text": "Tolong matikan rokok Anda.",
+    "en_text": "Please put out your cigarette."
+  },
+  {
+    "id": 86,
+    "id_text": "Bubuhkan tanda tangan Anda di sini.",
+    "en_text": "Put your signature right here."
+  },
+  {
+    "id": 87,
+    "id_text": "Buang sampah ke tempat sampah.",
+    "en_text": "Put the trash in the bin."
+  },
+  {
+    "id": 88,
+    "id_text": "Tempatkan diri Anda di posisi saya.",
+    "en_text": "Put yourself in my shoes."
+  },
+  {
+    "id": 89,
+    "id_text": "Saya mengatur ponsel ke mode hening.",
+    "en_text": "I put my phone on silent."
+  },
+  {
+    "id": 90,
+    "id_text": "Masukkan sisa makanan ke kulkas.",
+    "en_text": "Put the leftovers in fridge."
+  },
+  {
+    "id": 91,
+    "id_text": "Bawalah laptop Anda ke rapat.",
+    "en_text": "Bring your laptop to meeting."
+  },
+  {
+    "id": 92,
+    "id_text": "Tolong bawa payung bersama Anda.",
+    "en_text": "Please bring an umbrella along."
+  },
+  {
+    "id": 93,
+    "id_text": "Bawa kartu identitas Anda besok.",
+    "en_text": "Bring your ID card tomorrow."
+  },
+  {
+    "id": 94,
+    "id_text": "Tunjukkan usaha terbaik Anda.",
+    "en_text": "Bring out your best effort."
+  },
+  {
+    "id": 95,
+    "id_text": "Tolong bawakan saya cangkir bersih.",
+    "en_text": "Please bring me a clean cup."
+  },
+  {
+    "id": 96,
+    "id_text": "Bawalah keluarga Anda ke pesta.",
+    "en_text": "Bring your family to party."
+  },
+  {
+    "id": 97,
+    "id_text": "Bawa buku catatan untuk menulis.",
+    "en_text": "Bring a notebook to write."
+  },
+  {
+    "id": 98,
+    "id_text": "Dia membawakan kami kopi hari ini.",
+    "en_text": "He brought us coffee today."
+  },
+  {
+    "id": 99,
+    "id_text": "Bawa semua berkas ke kantor.",
+    "en_text": "Bring all files to office."
+  },
+  {
+    "id": 100,
+    "id_text": "Saya akan membawa dokumen tersebut.",
+    "en_text": "I will bring the document."
+  }
+];
+
+    let currentIndex = 0;
+    let isTranslated = false;
+
+    const counterEl = document.getElementById("card-counter");
+    const percentEl = document.getElementById("percent-indicator");
+    const progressFillEl = document.getElementById("progress-fill");
+    const tagEl = document.getElementById("card-tag");
+    const textIdEl = document.getElementById("text-id");
+    const textEnEl = document.getElementById("text-en");
+    const placeholderEl = document.getElementById("text-placeholder");
+    const audioBtnEl = document.getElementById("audio-btn");
+    const translateBtnEl = document.getElementById("translate-btn");
+    const prevBtnEl = document.getElementById("prev-btn");
+
+    function updateCard() {
+      const current = sentences[currentIndex];
+      tagEl.textContent = "Kalimat #" + current.id;
+      counterEl.textContent = (currentIndex + 1);
+      
+      const percent = Math.round(((currentIndex + 1) / sentences.length) * 100);
+      percentEl.textContent = percent + "%";
+      progressFillEl.style.width = percent + "%";
+
+      textIdEl.textContent = current.id_text;
+      textEnEl.textContent = current.en_text;
+
+      // Reset translation state
+      isTranslated = false;
+      textEnEl.style.display = "none";
+      audioBtnEl.style.display = "none";
+      placeholderEl.style.display = "block";
+      translateBtnEl.style.display = "block";
+      translateBtnEl.textContent = "Terjemahkan";
+
+      prevBtnEl.disabled = currentIndex === 0;
+      prevBtnEl.style.opacity = currentIndex === 0 ? "0.4" : "1";
+    }
+
+    function showTranslation() {
+      if (!isTranslated) {
+        isTranslated = true;
+        placeholderEl.style.display = "none";
+        textEnEl.style.display = "block";
+        audioBtnEl.style.display = "inline-flex";
+        translateBtnEl.textContent = "Sudah Diterjemahkan";
+        translateBtnEl.style.backgroundColor = "#10b981";
+      }
+    }
+
+    function nextCard() {
+      if (currentIndex < sentences.length - 1) {
+        currentIndex++;
+      } else {
+        currentIndex = 0; // Loop kembali ke awal
+      }
+      translateBtnEl.style.backgroundColor = "var(--primary)";
+      updateCard();
+    }
+
+    function prevCard() {
+      if (currentIndex > 0) {
+        currentIndex--;
+        translateBtnEl.style.backgroundColor = "var(--primary)";
+        updateCard();
+      }
+    }
+
+    function shuffleCards() {
+      for (let i = sentences.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [sentences[i], sentences[j]] = [sentences[j], sentences[i]];
+      }
+      currentIndex = 0;
+      translateBtnEl.style.backgroundColor = "var(--primary)";
+      updateCard();
+    }
+
+    function playAudio() {
+      if ("speechSynthesis" in window) {
+        const utterance = new SpeechSynthesisUtterance(sentences[currentIndex].en_text);
+        utterance.lang = "en-US";
+        utterance.rate = 0.9;
+        window.speechSynthesis.speak(utterance);
+      }
+    }
+
+    // Dukungan navigasi keyboard (desktop/laptop)
+    document.addEventListener("keydown", function(e) {
+      if (e.code === "Space") {
+        e.preventDefault();
+        showTranslation();
+      } else if (e.code === "ArrowRight") {
+        nextCard();
+      } else if (e.code === "ArrowLeft") {
+        prevCard();
+      }
+    });
+
+    // Swipe gesture support on smartphone
+    let touchstartX = 0;
+    let touchendX = 0;
+    const cardEl = document.getElementById("card");
+
+    cardEl.addEventListener("touchstart", function(e) {
+      touchstartX = e.changedTouches[0].screenX;
+    }, false);
+
+    cardEl.addEventListener("touchend", function(e) {
+      touchendX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }, false);
+
+    function handleSwipe() {
+      if (touchendX < touchstartX - 50) {
+        nextCard(); // Geser ke kiri untuk Next
+      }
+      if (touchendX > touchstartX + 50) {
+        prevCard(); // Geser ke kanan untuk Prev
+      }
+    }
+
+    // Inisialisasi awal
+    updateCard();
+  </script>
+</body>
+</html>
