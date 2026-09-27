@@ -1,0 +1,1465 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>English Flashcards - Leaving Home</title>
+  <script type="text/javascript" src="https://me.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=fA9gQ0_GfZuRhPg84WkdOGOtTSypqPSlYkWeuWDZq27kN6qqU0_Nc1eDh9Bio95kfIMdnIOFAA3eXuAhwyNT2hoTdE-hM1NX_OR6GUg6kBBOMOFZ2nAtTQzZ6YqpJu_OXGkE8_b3dkDrCb2NFIn9-MlRdeaqrYLX6sVRuk5EcRclWZRmaXe68ZAsLa4hUzPH4hdwcbgISAiZqGfNu5MszjKr5XbjaBAS0X7n5wMt-mw9ayt1ou8nqBjzFkU7PeHbIEJanOo111zQT5Pflu6Bwk5BTCRZLIIadAesflUeyTrQHsjk2KC4BgBiGyHpmnEU" charset="UTF-8"></script><style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --primary-light: #eff6ff;
+      --accent: #10b981;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 100vh;
+      padding: 16px;
+      line-height: 1.5;
+    }
+
+    header {
+      width: 100%;
+      max-width: 480px;
+      text-align: center;
+      margin-top: 8px;
+      margin-bottom: 12px;
+    }
+
+    header h1 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      letter-spacing: -0.02em;
+    }
+
+    header p {
+      font-size: 0.825rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .progress-wrapper {
+      width: 100%;
+      max-width: 480px;
+      margin-bottom: 16px;
+    }
+
+    .progress-info {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .progress-bar-bg {
+      width: 100%;
+      height: 8px;
+      background-color: var(--border);
+      border-radius: 9999px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 0.5%;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      border-radius: 9999px;
+      transition: width 0.3s ease;
+    }
+
+    .flashcard-container {
+      width: 100%;
+      max-width: 480px;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .flashcard {
+      width: 100%;
+      min-height: 280px;
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .card-badge {
+      align-self: flex-start;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 4px 10px;
+      border-radius: 8px;
+      background-color: var(--primary-light);
+      color: var(--primary);
+    }
+
+    .content-section {
+      margin: 20px 0;
+      text-align: center;
+    }
+
+    .label-lang {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    .sentence-id {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 16px;
+      line-height: 1.4;
+    }
+
+    .divider {
+      height: 1px;
+      background-color: var(--border);
+      margin: 14px 0;
+    }
+
+    .sentence-en-box {
+      min-height: 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .sentence-en {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      line-height: 1.4;
+      display: none;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .audio-btn {
+      display: none;
+      margin-top: 10px;
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 9999px;
+      padding: 6px 14px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .audio-btn:active {
+      background-color: var(--primary-light);
+      color: var(--primary);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .placeholder-en {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .controls-wrapper {
+      width: 100%;
+      max-width: 480px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .btn-main {
+      width: 100%;
+      padding: 15px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 14px;
+      background-color: var(--primary);
+      color: #ffffff;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+      transition: all 0.2s ease;
+    }
+
+    .btn-main:active {
+      background-color: var(--primary-dark);
+      transform: scale(0.98);
+    }
+
+    .nav-buttons {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 10px;
+    }
+
+    .btn-secondary {
+      padding: 14px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background-color: #ffffff;
+      color: var(--text-main);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-secondary:active {
+      background-color: #f1f5f9;
+      transform: scale(0.98);
+    }
+
+    .btn-next {
+      background-color: #0f172a;
+      color: #ffffff;
+      border: none;
+    }
+
+    .btn-next:active {
+      background-color: #334155;
+    }
+
+    .btn-shuffle {
+      margin-top: 4px;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      cursor: pointer;
+      text-decoration: underline;
+      padding: 6px;
+    }
+
+    footer {
+      margin-top: 12px;
+      font-size: 0.75rem;
+      color: #94a3b8;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>English Flashcards</h1>
+    <p>Leaving Home - 200 Praktis Kalimat Sehari-hari</p>
+  </header>
+
+  <div class="progress-wrapper">
+    <div class="progress-info">
+      <span>Nomor: <strong id="card-counter">1</strong> / 200</span>
+      <span id="percent-indicator">1%</span>
+    </div>
+    <div class="progress-bar-bg">
+      <div class="progress-bar-fill" id="progress-fill"></div>
+    </div>
+  </div>
+
+  <div class="flashcard-container">
+    <div class="flashcard" id="card">
+      <span class="card-badge" id="card-tag">Kalimat #1</span>
+
+      <div class="content-section">
+        <div class="label-lang">Bahasa Indonesia</div>
+        <div class="sentence-id" id="text-id">Saya berangkat sekarang.</div>
+
+        <div class="divider"></div>
+
+        <div class="label-lang">Bahasa Inggris</div>
+        <div class="sentence-en-box">
+          <div class="sentence-en" id="text-en">I am leaving now.</div>
+          <div class="placeholder-en" id="text-placeholder">Klik tombol "Terjemahkan" untuk melihat jawaban</div>
+          <button class="audio-btn" id="audio-btn" onclick="playAudio()">🔊 Dengarkan Audio</button>
+        </div>
+      </div>
+
+      <div></div>
+    </div>
+  </div>
+
+  <div class="controls-wrapper">
+    <button class="btn-main" id="translate-btn" onclick="showTranslation()">Terjemahkan</button>
+
+    <div class="nav-buttons">
+      <button class="btn-secondary" id="prev-btn" onclick="prevCard()">Kembali</button>
+      <button class="btn-secondary btn-next" id="next-btn" onclick="nextCard()">Next &rarr;</button>
+    </div>
+
+    <button class="btn-shuffle" onclick="shuffleCards()">Acak Urutan Kalimat</button>
+  </div>
+
+  <footer>
+    Tampilan optimal untuk smartphone. Dapat dipelajari kapan saja.
+  </footer>
+
+  <script>
+    const sentences = [
+  {
+    "id": 1,
+    "id_text": "Saya berangkat sekarang.",
+    "en_text": "I am leaving now."
+  },
+  {
+    "id": 2,
+    "id_text": "Saya harus pergi sekarang.",
+    "en_text": "I have to go now."
+  },
+  {
+    "id": 3,
+    "id_text": "Saya akan keluar.",
+    "en_text": "I am heading out."
+  },
+  {
+    "id": 4,
+    "id_text": "Waktunya untuk berangkat.",
+    "en_text": "It is time to leave."
+  },
+  {
+    "id": 5,
+    "id_text": "Saya siap untuk berangkat.",
+    "en_text": "I am ready to leave."
+  },
+  {
+    "id": 6,
+    "id_text": "Apakah Anda siap untuk pergi?",
+    "en_text": "Are you ready to go?"
+  },
+  {
+    "id": 7,
+    "id_text": "Sampai jumpa nanti.",
+    "en_text": "I will see you later."
+  },
+  {
+    "id": 8,
+    "id_text": "Sampai jumpa malam ini.",
+    "en_text": "I will see you tonight."
+  },
+  {
+    "id": 9,
+    "id_text": "Sampai jumpa besok pagi.",
+    "en_text": "I will see you tomorrow morning."
+  },
+  {
+    "id": 10,
+    "id_text": "Saya akan segera kembali.",
+    "en_text": "I will be back soon."
+  },
+  {
+    "id": 11,
+    "id_text": "Saya akan kembali sekitar pukul enam.",
+    "en_text": "I will return around six."
+  },
+  {
+    "id": 12,
+    "id_text": "Jangan menunggu saya sampai larut.",
+    "en_text": "Do not wait up for me."
+  },
+  {
+    "id": 13,
+    "id_text": "Saya mungkin pulang terlambat.",
+    "en_text": "I might be home late."
+  },
+  {
+    "id": 14,
+    "id_text": "Hubungi saya jika Anda butuh sesuatu.",
+    "en_text": "Call me if you need anything."
+  },
+  {
+    "id": 15,
+    "id_text": "Kirimi saya pesan saat Anda bangun.",
+    "en_text": "Text me when you wake up."
+  },
+  {
+    "id": 16,
+    "id_text": "Saya sudah mengunci pintu belakang.",
+    "en_text": "I locked the back door."
+  },
+  {
+    "id": 17,
+    "id_text": "Tolong kunci pintu depan.",
+    "en_text": "Please lock the front door."
+  },
+  {
+    "id": 18,
+    "id_text": "Di mana kunci rumah saya?",
+    "en_text": "Where are my house keys?"
+  },
+  {
+    "id": 19,
+    "id_text": "Saya membawa kunci dan dompet saya.",
+    "en_text": "I have my keys and wallet."
+  },
+  {
+    "id": 20,
+    "id_text": "Jangan lupa membawa ponsel Anda.",
+    "en_text": "Do not forget your phone."
+  },
+  {
+    "id": 21,
+    "id_text": "Saya sudah mematikan lampu.",
+    "en_text": "I turned off the lights."
+  },
+  {
+    "id": 22,
+    "id_text": "Apakah Anda sudah mematikan kompor?",
+    "en_text": "Did you turn off the stove?"
+  },
+  {
+    "id": 23,
+    "id_text": "Saya sudah menutup semua jendela.",
+    "en_text": "I shut all the windows."
+  },
+  {
+    "id": 24,
+    "id_text": "Ambil jaket Anda sebelum berangkat.",
+    "en_text": "Grab your jacket before leaving."
+  },
+  {
+    "id": 25,
+    "id_text": "Di luar dingin.",
+    "en_text": "It is cold outside."
+  },
+  {
+    "id": 26,
+    "id_text": "Bawalah payung bersama Anda.",
+    "en_text": "Take an umbrella with you."
+  },
+  {
+    "id": 27,
+    "id_text": "Kelihatannya akan hujan.",
+    "en_text": "It looks like rain."
+  },
+  {
+    "id": 28,
+    "id_text": "Saya akan pergi bekerja.",
+    "en_text": "I am going to work."
+  },
+  {
+    "id": 29,
+    "id_text": "Saya berangkat ke kantor.",
+    "en_text": "I am heading to the office."
+  },
+  {
+    "id": 30,
+    "id_text": "Saya berangkat ke sekolah.",
+    "en_text": "I am off to school."
+  },
+  {
+    "id": 31,
+    "id_text": "Anak-anak sedang berangkat ke sekolah.",
+    "en_text": "The children are leaving for school."
+  },
+  {
+    "id": 32,
+    "id_text": "Saya harus mengejar kereta saya.",
+    "en_text": "I need to catch my train."
+  },
+  {
+    "id": 33,
+    "id_text": "Bus tiba dalam lima menit.",
+    "en_text": "The bus arrives in five minutes."
+  },
+  {
+    "id": 34,
+    "id_text": "Saya akan naik taksi hari ini.",
+    "en_text": "I will take a taxi today."
+  },
+  {
+    "id": 35,
+    "id_text": "Jemputan saya sudah menunggu di luar.",
+    "en_text": "My ride is waiting outside."
+  },
+  {
+    "id": 36,
+    "id_text": "Saya mengemudi ke toko kelontong.",
+    "en_text": "I am driving to the grocery store."
+  },
+  {
+    "id": 37,
+    "id_text": "Saya akan berjalan kaki ke pasar.",
+    "en_text": "I will walk to the market."
+  },
+  {
+    "id": 38,
+    "id_text": "Saya akan keluar untuk makan siang.",
+    "en_text": "I am going out for lunch."
+  },
+  {
+    "id": 39,
+    "id_text": "Semoga hari Anda menyenangkan.",
+    "en_text": "Have a wonderful day."
+  },
+  {
+    "id": 40,
+    "id_text": "Semoga perjalanan Anda aman.",
+    "en_text": "Have a safe trip."
+  },
+  {
+    "id": 41,
+    "id_text": "Mengemudilah dengan hati-hati.",
+    "en_text": "Drive safely."
+  },
+  {
+    "id": 42,
+    "id_text": "Perhatikan langkah Anda.",
+    "en_text": "Watch your step."
+  },
+  {
+    "id": 43,
+    "id_text": "Tetaplah aman di luar sana.",
+    "en_text": "Stay safe out there."
+  },
+  {
+    "id": 44,
+    "id_text": "Saya akan menelepon Anda saat tiba.",
+    "en_text": "I will call you when I arrive."
+  },
+  {
+    "id": 45,
+    "id_text": "Kirim pesan kepada saya saat Anda tiba di sana.",
+    "en_text": "Send me a message when you get there."
+  },
+  {
+    "id": 46,
+    "id_text": "Anjing berada di dalam rumah.",
+    "en_text": "The dog is inside the house."
+  },
+  {
+    "id": 47,
+    "id_text": "Tolong beri makan kucing saat saya pergi.",
+    "en_text": "Please feed the cat while I am out."
+  },
+  {
+    "id": 48,
+    "id_text": "Saya meninggalkan kunci cadangan di atas meja.",
+    "en_text": "I left the spare key on the table."
+  },
+  {
+    "id": 49,
+    "id_text": "Apakah Anda membawa kartu bus Anda?",
+    "en_text": "Do you have your bus pass?"
+  },
+  {
+    "id": 50,
+    "id_text": "Saya tidak dapat menemukan kacamata saya.",
+    "en_text": "I cannot find my glasses."
+  },
+  {
+    "id": 51,
+    "id_text": "Mari berangkat lebih awal untuk menghindari macet.",
+    "en_text": "Let us leave early to beat the traffic."
+  },
+  {
+    "id": 52,
+    "id_text": "Lalu lintas akan padat pagi ini.",
+    "en_text": "Traffic will be heavy this morning."
+  },
+  {
+    "id": 53,
+    "id_text": "Saya agak terlambat.",
+    "en_text": "I am running a little late."
+  },
+  {
+    "id": 54,
+    "id_text": "Cepatlah atau kita akan terlambat.",
+    "en_text": "Hurry up or we will be late."
+  },
+  {
+    "id": 55,
+    "id_text": "Pakailah sepatu Anda.",
+    "en_text": "Put on your shoes."
+  },
+  {
+    "id": 56,
+    "id_text": "Saya sedang mengikat tali sepatu saya.",
+    "en_text": "I am tying my shoelaces."
+  },
+  {
+    "id": 57,
+    "id_text": "Saya mengambil ransel saya.",
+    "en_text": "I grabbed my backpack."
+  },
+  {
+    "id": 58,
+    "id_text": "Pastikan Anda membawa kotak makan siang Anda.",
+    "en_text": "Make sure you have your lunch box."
+  },
+  {
+    "id": 59,
+    "id_text": "Saya sudah mengemas makan siang saya.",
+    "en_text": "I packed my lunch already."
+  },
+  {
+    "id": 60,
+    "id_text": "Taksi sudah sampai.",
+    "en_text": "The taxi is here."
+  },
+  {
+    "id": 61,
+    "id_text": "Ayo kita pergi sekarang.",
+    "en_text": "Let us go now."
+  },
+  {
+    "id": 62,
+    "id_text": "Kita sebaiknya mulai berangkat.",
+    "en_text": "We should get moving."
+  },
+  {
+    "id": 63,
+    "id_text": "Saya keluar sebentar.",
+    "en_text": "I am stepping out for a minute."
+  },
+  {
+    "id": 64,
+    "id_text": "Saya akan kembali dalam satu jam.",
+    "en_text": "I will be back in an hour."
+  },
+  {
+    "id": 65,
+    "id_text": "Apakah Anda butuh sesuatu dari toko?",
+    "en_text": "Do you need anything from the store?"
+  },
+  {
+    "id": 66,
+    "id_text": "Saya akan membeli susu dalam perjalanan pulang.",
+    "en_text": "I will pick up some milk on my way home."
+  },
+  {
+    "id": 67,
+    "id_text": "Saya berangkat ke tempat gym.",
+    "en_text": "I am leaving for the gym."
+  },
+  {
+    "id": 68,
+    "id_text": "Dia meninggalkan rumah dua puluh menit yang lalu.",
+    "en_text": "She left home twenty minutes ago."
+  },
+  {
+    "id": 69,
+    "id_text": "Dia meninggalkan rumah pukul tujuh setiap pagi.",
+    "en_text": "He leaves the house at seven every morning."
+  },
+  {
+    "id": 70,
+    "id_text": "Kami selalu berangkat bersama.",
+    "en_text": "We always leave together."
+  },
+  {
+    "id": 71,
+    "id_text": "Saya keluar rumah lebih awal setiap Senin.",
+    "en_text": "I leave home early every Monday."
+  },
+  {
+    "id": 72,
+    "id_text": "Jangan biarkan pintu tidak terkunci.",
+    "en_text": "Do not leave the door unlocked."
+  },
+  {
+    "id": 73,
+    "id_text": "Periksa setrika sebelum kita pergi.",
+    "en_text": "Check the iron before we go."
+  },
+  {
+    "id": 74,
+    "id_text": "Saya sudah mencabut kabel pembuat kopi.",
+    "en_text": "I unplugged the coffee maker."
+  },
+  {
+    "id": 75,
+    "id_text": "Pintu garasi sudah ditutup.",
+    "en_text": "The garage door is closed."
+  },
+  {
+    "id": 76,
+    "id_text": "Saya sedang mengunci pagar sekarang.",
+    "en_text": "I am locking the gate now."
+  },
+  {
+    "id": 77,
+    "id_text": "Masukkan botol air Anda ke dalam tas.",
+    "en_text": "Put your water bottle in your bag."
+  },
+  {
+    "id": 78,
+    "id_text": "Saya membawa kartu identitas saya.",
+    "en_text": "I have my ID card with me."
+  },
+  {
+    "id": 79,
+    "id_text": "Apakah Anda membawa cukup uang tunai?",
+    "en_text": "Do you have enough cash?"
+  },
+  {
+    "id": 80,
+    "id_text": "Baterai ponsel saya penuh.",
+    "en_text": "My phone battery is full."
+  },
+  {
+    "id": 81,
+    "id_text": "Saya membawa pengisi daya portabel saya.",
+    "en_text": "I brought my portable charger."
+  },
+  {
+    "id": 82,
+    "id_text": "Cuaca hari ini cerah.",
+    "en_text": "The weather is nice today."
+  },
+  {
+    "id": 83,
+    "id_text": "Pakailah topi untuk melindungi diri dari panas matahari.",
+    "en_text": "Wear a hat to protect against the sun."
+  },
+  {
+    "id": 84,
+    "id_text": "Saya memakai jas hujan saya.",
+    "en_text": "I am wearing my raincoat."
+  },
+  {
+    "id": 85,
+    "id_text": "Gerimis mulai turun.",
+    "en_text": "It is starting to drizzle."
+  },
+  {
+    "id": 86,
+    "id_text": "Saya tidak boleh melewatkan pertemuan ini.",
+    "en_text": "I must not miss this meeting."
+  },
+  {
+    "id": 87,
+    "id_text": "Saya akan mengunjungi seorang teman.",
+    "en_text": "I am going to visit a friend."
+  },
+  {
+    "id": 88,
+    "id_text": "Saya memiliki janji dengan dokter hari ini.",
+    "en_text": "I have a doctor appointment today."
+  },
+  {
+    "id": 89,
+    "id_text": "Saya berangkat ke dokter gigi sekarang.",
+    "en_text": "I am heading to the dentist now."
+  },
+  {
+    "id": 90,
+    "id_text": "Kami akan pergi ke bandara.",
+    "en_text": "We are going to the airport."
+  },
+  {
+    "id": 91,
+    "id_text": "Kami berangkat untuk liburan.",
+    "en_text": "We are leaving for our vacation."
+  },
+  {
+    "id": 92,
+    "id_text": "Penerbangan saya berangkat dalam tiga jam.",
+    "en_text": "My flight leaves in three hours."
+  },
+  {
+    "id": 93,
+    "id_text": "Apakah Anda sudah mengemas semua koper?",
+    "en_text": "Did you pack all the luggage?"
+  },
+  {
+    "id": 94,
+    "id_text": "Tas sudah berada di bagasi mobil.",
+    "en_text": "The bags are in the car trunk."
+  },
+  {
+    "id": 95,
+    "id_text": "Saya sudah bersiap keluar rumah.",
+    "en_text": "I checked out of the house."
+  },
+  {
+    "id": 96,
+    "id_text": "Saya pindah ke apartemen baru hari ini.",
+    "en_text": "I am moving to a new apartment today."
+  },
+  {
+    "id": 97,
+    "id_text": "Dia meninggalkan rumah untuk kuliah.",
+    "en_text": "She is leaving home for university."
+  },
+  {
+    "id": 98,
+    "id_text": "Dia akan pindah rumah akhir pekan ini.",
+    "en_text": "He is moving out this weekend."
+  },
+  {
+    "id": 99,
+    "id_text": "Sulit untuk meninggalkan rumah untuk pertama kalinya.",
+    "en_text": "It is hard to leave home for the first time."
+  },
+  {
+    "id": 100,
+    "id_text": "Saya akan merindukan keluarga saya.",
+    "en_text": "I will miss my family."
+  },
+  {
+    "id": 101,
+    "id_text": "Saya bersemangat untuk memulai perjalanan saya.",
+    "en_text": "I am excited to start my journey."
+  },
+  {
+    "id": 102,
+    "id_text": "Selamat tinggal, Ibu dan Ayah.",
+    "en_text": "Goodbye, Mom and Dad."
+  },
+  {
+    "id": 103,
+    "id_text": "Beri saya pelukan sebelum saya pergi.",
+    "en_text": "Give me a hug before I go."
+  },
+  {
+    "id": 104,
+    "id_text": "Saya akan berkirim surat kepada Anda setiap minggu.",
+    "en_text": "I will write to you every week."
+  },
+  {
+    "id": 105,
+    "id_text": "Saya akan melakukan panggilan video malam ini.",
+    "en_text": "I will video call you this evening."
+  },
+  {
+    "id": 106,
+    "id_text": "Jaga kebersihan rumah selama saya pergi.",
+    "en_text": "Keep the house clean while I am away."
+  },
+  {
+    "id": 107,
+    "id_text": "Siram tanaman besok pagi.",
+    "en_text": "Water the plants tomorrow morning."
+  },
+  {
+    "id": 108,
+    "id_text": "Kurir surat akan segera tiba.",
+    "en_text": "The mail carrier will arrive soon."
+  },
+  {
+    "id": 109,
+    "id_text": "Tolong ambilkan paket apa pun untuk saya.",
+    "en_text": "Please take in any packages for me."
+  },
+  {
+    "id": 110,
+    "id_text": "Saya akan berada di luar kota sampai hari Jumat.",
+    "en_text": "I will be out of town until Friday."
+  },
+  {
+    "id": 111,
+    "id_text": "Saya berangkat untuk perjalanan dinas.",
+    "en_text": "I am leaving for a business trip."
+  },
+  {
+    "id": 112,
+    "id_text": "Sopir taksi sedang membunyikan klakson.",
+    "en_text": "The taxi driver is honking the horn."
+  },
+  {
+    "id": 113,
+    "id_text": "Saya sedang berjalan keluar pintu.",
+    "en_text": "I am walking out the door."
+  },
+  {
+    "id": 114,
+    "id_text": "Tutup pintu di belakang Anda.",
+    "en_text": "Close the door behind you."
+  },
+  {
+    "id": 115,
+    "id_text": "Pastikan gerendel pintu terkunci rapat.",
+    "en_text": "Make sure the latch clicks."
+  },
+  {
+    "id": 116,
+    "id_text": "Apakah Anda memegang kunci mobil?",
+    "en_text": "Do you have the car keys?"
+  },
+  {
+    "id": 117,
+    "id_text": "Saya meninggalkan kacamata hitam saya di atas meja.",
+    "en_text": "I left my sunglasses on the counter."
+  },
+  {
+    "id": 118,
+    "id_text": "Izinkan saya mengambil mantel dengan cepat.",
+    "en_text": "Let me grab my coat quickly."
+  },
+  {
+    "id": 119,
+    "id_text": "Saya akan menunggu Anda di dekat mobil.",
+    "en_text": "I will wait for you by the car."
+  },
+  {
+    "id": 120,
+    "id_text": "Tolong buka kunci pintu mobil.",
+    "en_text": "Unlock the car doors, please."
+  },
+  {
+    "id": 121,
+    "id_text": "Pasang sabuk pengaman Anda.",
+    "en_text": "Fasten your seatbelt."
+  },
+  {
+    "id": 122,
+    "id_text": "Kami sedang dalam perjalanan sekarang.",
+    "en_text": "We are on our way now."
+  },
+  {
+    "id": 123,
+    "id_text": "Saya baru saja keluar dari rumah.",
+    "en_text": "I just stepped out of the house."
+  },
+  {
+    "id": 124,
+    "id_text": "Jalanan sangat sepi hari ini.",
+    "en_text": "The street is very quiet today."
+  },
+  {
+    "id": 125,
+    "id_text": "Saya berlari untuk mengejar kereta.",
+    "en_text": "I am running to catch the train."
+  },
+  {
+    "id": 126,
+    "id_text": "Halte bus berada di seberang jalan.",
+    "en_text": "The bus stop is across the street."
+  },
+  {
+    "id": 127,
+    "id_text": "Saya melihat bus saya datang sekarang.",
+    "en_text": "I see my bus coming now."
+  },
+  {
+    "id": 128,
+    "id_text": "Saya akan tiba di kantor dalam tiga puluh menit.",
+    "en_text": "I will be at the office in thirty minutes."
+  },
+  {
+    "id": 129,
+    "id_text": "Hubungi saya jika kiriman tiba.",
+    "en_text": "Call me if the delivery arrives."
+  },
+  {
+    "id": 130,
+    "id_text": "Jangan buka pintu untuk orang asing.",
+    "en_text": "Do not open the door to strangers."
+  },
+  {
+    "id": 131,
+    "id_text": "Saya meninggalkan makan malam di lemari es.",
+    "en_text": "I left some dinner in the fridge."
+  },
+  {
+    "id": 132,
+    "id_text": "Hangatkan makanan saat Anda lapar.",
+    "en_text": "Warm up the food when you are hungry."
+  },
+  {
+    "id": 133,
+    "id_text": "Saya akan makan siang di luar hari ini.",
+    "en_text": "I will eat lunch outside today."
+  },
+  {
+    "id": 134,
+    "id_text": "Saya pergi bersama rekan kerja saya.",
+    "en_text": "I am leaving with my coworkers."
+  },
+  {
+    "id": 135,
+    "id_text": "Kami memiliki rapat pagi hari.",
+    "en_text": "We have an early morning meeting."
+  },
+  {
+    "id": 136,
+    "id_text": "Saya akan langsung berangkat setelah sarapan.",
+    "en_text": "I will leave directly after breakfast."
+  },
+  {
+    "id": 137,
+    "id_text": "Habiskan susu Anda sebelum kita berangkat.",
+    "en_text": "Finish your milk before we leave."
+  },
+  {
+    "id": 138,
+    "id_text": "Apakah sepatu Anda bersih?",
+    "en_text": "Are your shoes clean?"
+  },
+  {
+    "id": 139,
+    "id_text": "Saya menyemir sepatu saya tadi malam.",
+    "en_text": "I polished my shoes last night."
+  },
+  {
+    "id": 140,
+    "id_text": "Saya sedang memakai jam tangan saya.",
+    "en_text": "I am putting on my watch."
+  },
+  {
+    "id": 141,
+    "id_text": "Jam berapa sekarang?",
+    "en_text": "What time is it right now?"
+  },
+  {
+    "id": 142,
+    "id_text": "Kita masih punya sisa waktu sepuluh menit.",
+    "en_text": "We still have ten minutes left."
+  },
+  {
+    "id": 143,
+    "id_text": "Kita punya banyak waktu.",
+    "en_text": "We have plenty of time."
+  },
+  {
+    "id": 144,
+    "id_text": "Kita tidak boleh terlambat.",
+    "en_text": "We must not be late."
+  },
+  {
+    "id": 145,
+    "id_text": "Ketepatan waktu sangat penting.",
+    "en_text": "Punctuality is very important."
+  },
+  {
+    "id": 146,
+    "id_text": "Saya selalu berangkat lima belas menit lebih awal.",
+    "en_text": "I always leave fifteen minutes early."
+  },
+  {
+    "id": 147,
+    "id_text": "Butuh waktu dua puluh menit berjalan kaki ke sana.",
+    "en_text": "It takes twenty minutes to walk there."
+  },
+  {
+    "id": 148,
+    "id_text": "Saya akan mengendarai sepeda saya hari ini.",
+    "en_text": "I will ride my bicycle today."
+  },
+  {
+    "id": 149,
+    "id_text": "Pakailah helm Anda.",
+    "en_text": "Put on your helmet."
+  },
+  {
+    "id": 150,
+    "id_text": "Tekanan ban sudah baik.",
+    "en_text": "The tire pressure is good."
+  },
+  {
+    "id": 151,
+    "id_text": "Saya sedang membuka kunci sepeda saya.",
+    "en_text": "I am unlocking my bicycle."
+  },
+  {
+    "id": 152,
+    "id_text": "Saya akan memarkir mobil saya di stasiun.",
+    "en_text": "I will park my car at the station."
+  },
+  {
+    "id": 153,
+    "id_text": "Saya membawa kartu langganan kereta bulanan saya.",
+    "en_text": "I have my monthly train pass."
+  },
+  {
+    "id": 154,
+    "id_text": "Ingat untuk mematikan pendingin ruangan.",
+    "en_text": "Remember to turn off the air conditioner."
+  },
+  {
+    "id": 155,
+    "id_text": "Saya sudah mengecilkan penghangat ruangan.",
+    "en_text": "I turned down the heater."
+  },
+  {
+    "id": 156,
+    "id_text": "Apakah Anda sudah memadamkan lilin?",
+    "en_text": "Did you extinguish the candles?"
+  },
+  {
+    "id": 157,
+    "id_text": "Rumah sudah aman.",
+    "en_text": "The house is secure."
+  },
+  {
+    "id": 158,
+    "id_text": "Sistem alarm sudah diaktifkan.",
+    "en_text": "The alarm system is armed."
+  },
+  {
+    "id": 159,
+    "id_text": "Masukkan kode keamanan sebelum keluar.",
+    "en_text": "Enter the security code before leaving."
+  },
+  {
+    "id": 160,
+    "id_text": "Periksa kembali semua pintu keluar.",
+    "en_text": "Double check all the exit doors."
+  },
+  {
+    "id": 161,
+    "id_text": "Semuanya sudah dimatikan.",
+    "en_text": "Everything is turned off."
+  },
+  {
+    "id": 162,
+    "id_text": "Saya berangkat ke perpustakaan sekarang.",
+    "en_text": "I am heading to the library now."
+  },
+  {
+    "id": 163,
+    "id_text": "Saya akan belajar di sana sampai malam.",
+    "en_text": "I will study there until evening."
+  },
+  {
+    "id": 164,
+    "id_text": "Saya akan bertemu teman sekelas saya hari ini.",
+    "en_text": "I will see my classmates today."
+  },
+  {
+    "id": 165,
+    "id_text": "Saya membawa semua buku pelajaran saya.",
+    "en_text": "I have all my textbooks."
+  },
+  {
+    "id": 166,
+    "id_text": "Pekerjaan rumah saya ada di dalam map.",
+    "en_text": "My homework is in my folder."
+  },
+  {
+    "id": 167,
+    "id_text": "Saya mengantar adik saya berjalan kaki ke sekolah.",
+    "en_text": "I am walking my sister to school."
+  },
+  {
+    "id": 168,
+    "id_text": "Pegang tangan saya saat menyeberang jalan.",
+    "en_text": "Hold my hand when crossing the street."
+  },
+  {
+    "id": 169,
+    "id_text": "Lihat ke kanan dan kiri sebelum menyeberang.",
+    "en_text": "Look both ways before crossing."
+  },
+  {
+    "id": 170,
+    "id_text": "Kami tiba dengan selamat di sudut jalan.",
+    "en_text": "We arrived safely at the corner."
+  },
+  {
+    "id": 171,
+    "id_text": "Saya akan menjemput Anda pukul tiga.",
+    "en_text": "I will pick you up at three o'clock."
+  },
+  {
+    "id": 172,
+    "id_text": "Tunggu saya di dalam gerbang sekolah.",
+    "en_text": "Wait for me inside the school gate."
+  },
+  {
+    "id": 173,
+    "id_text": "Saya keluar rumah tepat di belakang Anda.",
+    "en_text": "I am leaving the house right behind you."
+  },
+  {
+    "id": 174,
+    "id_text": "Jangan membanting pintu.",
+    "en_text": "Do not slam the door."
+  },
+  {
+    "id": 175,
+    "id_text": "Tutup pintu dengan tenang.",
+    "en_text": "Shut the door quietly."
+  },
+  {
+    "id": 176,
+    "id_text": "Tetangga masih tidur.",
+    "en_text": "The neighbors are still sleeping."
+  },
+  {
+    "id": 177,
+    "id_text": "Ini adalah pagi yang tenang.",
+    "en_text": "It is a quiet morning."
+  },
+  {
+    "id": 178,
+    "id_text": "Matahari sedang terbit sekarang.",
+    "en_text": "The sun is rising now."
+  },
+  {
+    "id": 179,
+    "id_text": "Saya menikmati berangkat di pagi hari.",
+    "en_text": "I enjoy leaving early in the morning."
+  },
+  {
+    "id": 180,
+    "id_text": "Udara pagi terasa segar.",
+    "en_text": "The morning air feels fresh."
+  },
+  {
+    "id": 181,
+    "id_text": "Saya siap untuk hari yang produktif.",
+    "en_text": "I am ready for a productive day."
+  },
+  {
+    "id": 182,
+    "id_text": "Doakan keberhasilan wawancara saya hari ini.",
+    "en_text": "Wish me luck on my interview today."
+  },
+  {
+    "id": 183,
+    "id_text": "Semoga sukses dengan presentasi Anda.",
+    "en_text": "Good luck with your presentation."
+  },
+  {
+    "id": 184,
+    "id_text": "Lakukan yang terbaik hari ini.",
+    "en_text": "Do your best today."
+  },
+  {
+    "id": 185,
+    "id_text": "Saya percaya pada Anda.",
+    "en_text": "I believe in you."
+  },
+  {
+    "id": 186,
+    "id_text": "Saya keluar untuk lari pagi harian saya.",
+    "en_text": "I am stepping out for my daily run."
+  },
+  {
+    "id": 187,
+    "id_text": "Saya akan kembali dalam tiga puluh menit.",
+    "en_text": "I will be back in thirty minutes."
+  },
+  {
+    "id": 188,
+    "id_text": "Saya menyimpan kunci rumah di saku saya.",
+    "en_text": "I have my house key in my pocket."
+  },
+  {
+    "id": 189,
+    "id_text": "Biarkan lampu teras menyala untuk saya.",
+    "en_text": "Leave the porch light on for me."
+  },
+  {
+    "id": 190,
+    "id_text": "Saya akan mengunci rumah saat saya kembali.",
+    "en_text": "I will lock up when I return."
+  },
+  {
+    "id": 191,
+    "id_text": "Apakah semua orang sudah di dalam mobil?",
+    "en_text": "Is everyone in the car?"
+  },
+  {
+    "id": 192,
+    "id_text": "Mari kita nyalakan mesin mobil.",
+    "en_text": "Let us start the engine."
+  },
+  {
+    "id": 193,
+    "id_text": "Kita siap berangkat.",
+    "en_text": "We are ready to roll."
+  },
+  {
+    "id": 194,
+    "id_text": "Naikkan kaca jendela mobil.",
+    "en_text": "Roll up the car windows."
+  },
+  {
+    "id": 195,
+    "id_text": "Mari kita mulai perjalanan kita.",
+    "en_text": "Let us begin our trip."
+  },
+  {
+    "id": 196,
+    "id_text": "Saya akan menemui Anda saat saya kembali.",
+    "en_text": "I will see you when I get back."
+  },
+  {
+    "id": 197,
+    "id_text": "Rawat rumah dengan baik.",
+    "en_text": "Take good care of the house."
+  },
+  {
+    "id": 198,
+    "id_text": "Selamat tinggal sampai jumpa lagi.",
+    "en_text": "Farewell until next time."
+  },
+  {
+    "id": 199,
+    "id_text": "Saya resmi berangkat sekarang.",
+    "en_text": "I am officially leaving now."
+  },
+  {
+    "id": 200,
+    "id_text": "Sampai jumpa segera.",
+    "en_text": "See you all soon."
+  }
+];
+
+    let currentIndex = 0;
+    let isTranslated = false;
+
+    const counterEl = document.getElementById("card-counter");
+    const percentEl = document.getElementById("percent-indicator");
+    const progressFillEl = document.getElementById("progress-fill");
+    const tagEl = document.getElementById("card-tag");
+    const textIdEl = document.getElementById("text-id");
+    const textEnEl = document.getElementById("text-en");
+    const placeholderEl = document.getElementById("text-placeholder");
+    const audioBtnEl = document.getElementById("audio-btn");
+    const translateBtnEl = document.getElementById("translate-btn");
+    const prevBtnEl = document.getElementById("prev-btn");
+
+    function updateCard() {
+      const current = sentences[currentIndex];
+      tagEl.textContent = "Kalimat #" + current.id;
+      counterEl.textContent = (currentIndex + 1);
+      
+      const percent = Math.round(((currentIndex + 1) / sentences.length) * 100);
+      percentEl.textContent = percent + "%";
+      progressFillEl.style.width = percent + "%";
+
+      textIdEl.textContent = current.id_text;
+      textEnEl.textContent = current.en_text;
+
+      // Reset translation state
+      isTranslated = false;
+      textEnEl.style.display = "none";
+      audioBtnEl.style.display = "none";
+      placeholderEl.style.display = "block";
+      translateBtnEl.style.display = "block";
+      translateBtnEl.textContent = "Terjemahkan";
+
+      prevBtnEl.disabled = currentIndex === 0;
+      prevBtnEl.style.opacity = currentIndex === 0 ? "0.4" : "1";
+    }
+
+    function showTranslation() {
+      if (!isTranslated) {
+        isTranslated = true;
+        placeholderEl.style.display = "none";
+        textEnEl.style.display = "block";
+        audioBtnEl.style.display = "inline-flex";
+        translateBtnEl.textContent = "Sudah Diterjemahkan";
+        translateBtnEl.style.backgroundColor = "#10b981";
+      }
+    }
+
+    function nextCard() {
+      if (currentIndex < sentences.length - 1) {
+        currentIndex++;
+      } else {
+        currentIndex = 0; // Loop kembali ke awal
+      }
+      translateBtnEl.style.backgroundColor = "var(--primary)";
+      updateCard();
+    }
+
+    function prevCard() {
+      if (currentIndex > 0) {
+        currentIndex--;
+        translateBtnEl.style.backgroundColor = "var(--primary)";
+        updateCard();
+      }
+    }
+
+    function shuffleCards() {
+      for (let i = sentences.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [sentences[i], sentences[j]] = [sentences[j], sentences[i]];
+      }
+      currentIndex = 0;
+      translateBtnEl.style.backgroundColor = "var(--primary)";
+      updateCard();
+    }
+
+    function playAudio() {
+      if ("speechSynthesis" in window) {
+        const utterance = new SpeechSynthesisUtterance(sentences[currentIndex].en_text);
+        utterance.lang = "en-US";
+        utterance.rate = 0.9;
+        window.speechSynthesis.speak(utterance);
+      }
+    }
+
+    // Dukungan navigasi keyboard (desktop/laptop)
+    document.addEventListener("keydown", function(e) {
+      if (e.code === "Space") {
+        e.preventDefault();
+        showTranslation();
+      } else if (e.code === "ArrowRight") {
+        nextCard();
+      } else if (e.code === "ArrowLeft") {
+        prevCard();
+      }
+    });
+
+    // Swipe gesture support on smartphone
+    let touchstartX = 0;
+    let touchendX = 0;
+    const cardEl = document.getElementById("card");
+
+    cardEl.addEventListener("touchstart", function(e) {
+      touchstartX = e.changedTouches[0].screenX;
+    }, false);
+
+    cardEl.addEventListener("touchend", function(e) {
+      touchendX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }, false);
+
+    function handleSwipe() {
+      if (touchendX < touchstartX - 50) {
+        nextCard(); // Geser ke kiri untuk Next
+      }
+      if (touchendX > touchstartX + 50) {
+        prevCard(); // Geser ke kanan untuk Prev
+      }
+    }
+
+    // Inisialisasi awal
+    updateCard();
+  </script>
+</body>
+</html>
