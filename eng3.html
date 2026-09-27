@@ -1,0 +1,1465 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>English Flashcards - Business & Meetings</title>
+  <script type="text/javascript" src="https://me.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=mp-L6ew4cpICjzuTUF_rqXrSfkIVCTcqNmMBQY8Y55D8hzCGrUkqkB-Yq3J9FuxLDXmEJvXCrivIZ19JNfvE45QKedXgezZb80kITMVaXmw8U5rzjUY3m5qnPdaZN0SI92O-EtfMCmMVD-3FHG1yVq9Y3awr3hHghtEi4BklnjJP2GFKBGQUNgIYgF8Qehgd-jIAKUC3rzllx8ZvWCOsyzG-IGuoGE4nvPR5QC6d0ldkgIQKfh4zvnCEsNu1x6bMX7ezH_Ow7p724PVOxuBSryBSmtWsPl2Bbi64xywtwP_w5fAp-JMPTFRZD-2RVvDr9BrA4fMH6FcTfl_e98rBD2i0J69ZgaMzhEBPf4jlmbs" charset="UTF-8"></script><style>
+    :root {
+      --primary: #0f766e;
+      --primary-dark: #115e59;
+      --primary-light: #ccfbf1;
+      --accent: #10b981;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 100vh;
+      padding: 16px;
+      line-height: 1.5;
+    }
+
+    header {
+      width: 100%;
+      max-width: 480px;
+      text-align: center;
+      margin-top: 8px;
+      margin-bottom: 12px;
+    }
+
+    header h1 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      letter-spacing: -0.02em;
+    }
+
+    header p {
+      font-size: 0.825rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .progress-wrapper {
+      width: 100%;
+      max-width: 480px;
+      margin-bottom: 16px;
+    }
+
+    .progress-info {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .progress-bar-bg {
+      width: 100%;
+      height: 8px;
+      background-color: var(--border);
+      border-radius: 9999px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 0.5%;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      border-radius: 9999px;
+      transition: width 0.3s ease;
+    }
+
+    .flashcard-container {
+      width: 100%;
+      max-width: 480px;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .flashcard {
+      width: 100%;
+      min-height: 280px;
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .card-badge {
+      align-self: flex-start;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 4px 10px;
+      border-radius: 8px;
+      background-color: var(--primary-light);
+      color: var(--primary);
+    }
+
+    .content-section {
+      margin: 20px 0;
+      text-align: center;
+    }
+
+    .label-lang {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    .sentence-id {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 16px;
+      line-height: 1.4;
+    }
+
+    .divider {
+      height: 1px;
+      background-color: var(--border);
+      margin: 14px 0;
+    }
+
+    .sentence-en-box {
+      min-height: 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .sentence-en {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      line-height: 1.4;
+      display: none;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .audio-btn {
+      display: none;
+      margin-top: 10px;
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 9999px;
+      padding: 6px 14px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .audio-btn:active {
+      background-color: var(--primary-light);
+      color: var(--primary);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .placeholder-en {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .controls-wrapper {
+      width: 100%;
+      max-width: 480px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .btn-main {
+      width: 100%;
+      padding: 15px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 14px;
+      background-color: var(--primary);
+      color: #ffffff;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(15, 118, 110, 0.25);
+      transition: all 0.2s ease;
+    }
+
+    .btn-main:active {
+      background-color: var(--primary-dark);
+      transform: scale(0.98);
+    }
+
+    .nav-buttons {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 10px;
+    }
+
+    .btn-secondary {
+      padding: 14px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background-color: #ffffff;
+      color: var(--text-main);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-secondary:active {
+      background-color: #f1f5f9;
+      transform: scale(0.98);
+    }
+
+    .btn-next {
+      background-color: #0f172a;
+      color: #ffffff;
+      border: none;
+    }
+
+    .btn-next:active {
+      background-color: #334155;
+    }
+
+    .btn-shuffle {
+      margin-top: 4px;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      cursor: pointer;
+      text-decoration: underline;
+      padding: 6px;
+    }
+
+    footer {
+      margin-top: 12px;
+      font-size: 0.75rem;
+      color: #94a3b8;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>English Flashcards</h1>
+    <p>Business & Meetings - 200 Kalimat Rapat & Bisnis</p>
+  </header>
+
+  <div class="progress-wrapper">
+    <div class="progress-info">
+      <span>Nomor: <strong id="card-counter">1</strong> / 200</span>
+      <span id="percent-indicator">1%</span>
+    </div>
+    <div class="progress-bar-bg">
+      <div class="progress-bar-fill" id="progress-fill"></div>
+    </div>
+  </div>
+
+  <div class="flashcard-container">
+    <div class="flashcard" id="card">
+      <span class="card-badge" id="card-tag">Kalimat #1</span>
+
+      <div class="content-section">
+        <div class="label-lang">Bahasa Indonesia</div>
+        <div class="sentence-id" id="text-id">Mari kita mulai rapatnya.</div>
+
+        <div class="divider"></div>
+
+        <div class="label-lang">Bahasa Inggris</div>
+        <div class="sentence-en-box">
+          <div class="sentence-en" id="text-en">Let us start the meeting.</div>
+          <div class="placeholder-en" id="text-placeholder">Klik tombol "Terjemahkan" untuk melihat jawaban</div>
+          <button class="audio-btn" id="audio-btn" onclick="playAudio()">🔊 Dengarkan Audio</button>
+        </div>
+      </div>
+
+      <div></div>
+    </div>
+  </div>
+
+  <div class="controls-wrapper">
+    <button class="btn-main" id="translate-btn" onclick="showTranslation()">Terjemahkan</button>
+
+    <div class="nav-buttons">
+      <button class="btn-secondary" id="prev-btn" onclick="prevCard()">Kembali</button>
+      <button class="btn-secondary btn-next" id="next-btn" onclick="nextCard()">Next &rarr;</button>
+    </div>
+
+    <button class="btn-shuffle" onclick="shuffleCards()">Acak Urutan Kalimat</button>
+  </div>
+
+  <footer>
+    Tampilan optimal untuk smartphone. Dapat dipelajari kapan saja.
+  </footer>
+
+  <script>
+    const sentences = [
+  {
+    "id": 1,
+    "id_text": "Mari kita mulai rapatnya.",
+    "en_text": "Let us start the meeting."
+  },
+  {
+    "id": 2,
+    "id_text": "Terima kasih telah hadir hari ini.",
+    "en_text": "Thank you for coming today."
+  },
+  {
+    "id": 3,
+    "id_text": "Selamat datang di sesi hari ini.",
+    "en_text": "Welcome to today's session."
+  },
+  {
+    "id": 4,
+    "id_text": "Apakah semua orang sudah hadir hari ini?",
+    "en_text": "Is everyone here today?"
+  },
+  {
+    "id": 5,
+    "id_text": "Agenda kita penuh hari ini.",
+    "en_text": "We have a full agenda today."
+  },
+  {
+    "id": 6,
+    "id_text": "Apakah semua orang dapat mendengar suara saya dengan jelas?",
+    "en_text": "Can everyone hear me clearly?"
+  },
+  {
+    "id": 7,
+    "id_text": "Tolong nyalakan mikrofon Anda.",
+    "en_text": "Please turn on your microphone."
+  },
+  {
+    "id": 8,
+    "id_text": "Tolong matikan suara mikrofon Anda.",
+    "en_text": "Please mute your microphone."
+  },
+  {
+    "id": 9,
+    "id_text": "Mari kita periksa kehadiran terlebih dahulu.",
+    "en_text": "Let us take attendance first."
+  },
+  {
+    "id": 10,
+    "id_text": "Saya menghargai waktu Anda hari ini.",
+    "en_text": "I appreciate your time today."
+  },
+  {
+    "id": 11,
+    "id_text": "Mari kita mulai pembahasan bisnis.",
+    "en_text": "Let us get down to business."
+  },
+  {
+    "id": 12,
+    "id_text": "Terima kasih telah bergabung meski diundang mendadak.",
+    "en_text": "Thank you for joining on short notice."
+  },
+  {
+    "id": 13,
+    "id_text": "Senang bertemu Anda sekalian.",
+    "en_text": "Glad to see you all."
+  },
+  {
+    "id": 14,
+    "id_text": "Bisakah kita memulai diskusi kita?",
+    "en_text": "Shall we begin our discussion?"
+  },
+  {
+    "id": 15,
+    "id_text": "Saya harap Anda semua dalam keadaan baik.",
+    "en_text": "I hope everyone is doing well."
+  },
+  {
+    "id": 16,
+    "id_text": "Mari kita tunggu dua menit lagi.",
+    "en_text": "Let us wait two more minutes."
+  },
+  {
+    "id": 17,
+    "id_text": "Kita kedatangan pembicara tamu hari ini.",
+    "en_text": "We have a guest speaker today."
+  },
+  {
+    "id": 18,
+    "id_text": "Terima kasih telah menyempatkan waktu untuk ini.",
+    "en_text": "Thank you for making time for this."
+  },
+  {
+    "id": 19,
+    "id_text": "Kita berkumpul untuk membahas pembaruan proyek.",
+    "en_text": "We are meeting to discuss project updates."
+  },
+  {
+    "id": 20,
+    "id_text": "Mari kita mulai dengan perkenalan singkat.",
+    "en_text": "Let us start with brief introductions."
+  },
+  {
+    "id": 21,
+    "id_text": "Tujuan utama hari ini sudah jelas.",
+    "en_text": "Today's main goal is clear."
+  },
+  {
+    "id": 22,
+    "id_text": "Ini adalah agenda kita untuk hari ini.",
+    "en_text": "Here is our agenda for today."
+  },
+  {
+    "id": 23,
+    "id_text": "Pertama, kita akan meninjau penjualan minggu lalu.",
+    "en_text": "First, we will review last week's sales."
+  },
+  {
+    "id": 24,
+    "id_text": "Kedua, kita akan membahas anggaran baru.",
+    "en_text": "Second, we will discuss the new budget."
+  },
+  {
+    "id": 25,
+    "id_text": "Terakhir, kita akan membagi tugas tim.",
+    "en_text": "Finally, we will assign team tasks."
+  },
+  {
+    "id": 26,
+    "id_text": "Tujuan kita adalah mencapai satu keputusan.",
+    "en_text": "Our objective is to reach a decision."
+  },
+  {
+    "id": 27,
+    "id_text": "Kita harus tetap sesuai jadwal.",
+    "en_text": "We need to stay on schedule."
+  },
+  {
+    "id": 28,
+    "id_text": "Mari kita fokus pada poin utama.",
+    "en_text": "Let us focus on the main point."
+  },
+  {
+    "id": 29,
+    "id_text": "Saya ingin rapat ini berlangsung singkat.",
+    "en_text": "I want to keep this meeting brief."
+  },
+  {
+    "id": 30,
+    "id_text": "Kita punya waktu tiga puluh menit untuk panggilan ini.",
+    "en_text": "We have thirty minutes for this call."
+  },
+  {
+    "id": 31,
+    "id_text": "Poin pertama dalam agenda adalah anggaran.",
+    "en_text": "The first item on the agenda is budget."
+  },
+  {
+    "id": 32,
+    "id_text": "Mari kita lanjut ke poin berikutnya.",
+    "en_text": "Let us move to the next item."
+  },
+  {
+    "id": 33,
+    "id_text": "Hari ini kita harus menyelesaikan masalah ini.",
+    "en_text": "Today we need to solve this issue."
+  },
+  {
+    "id": 34,
+    "id_text": "Silakan lihat dokumen yang saya kirim.",
+    "en_text": "Please refer to the document I sent."
+  },
+  {
+    "id": 35,
+    "id_text": "Saya akan membagikan layar saya sekarang.",
+    "en_text": "I will share my screen now."
+  },
+  {
+    "id": 36,
+    "id_text": "Saya ingin memperkenalkan rencana kita.",
+    "en_text": "I would like to introduce our plan."
+  },
+  {
+    "id": 37,
+    "id_text": "Izinkan saya menjelaskan angka-angkanya.",
+    "en_text": "Let me walk you through the numbers."
+  },
+  {
+    "id": 38,
+    "id_text": "Lihat grafik ini di layar.",
+    "en_text": "Look at this chart on the screen."
+  },
+  {
+    "id": 39,
+    "id_text": "Penjualan meningkat sepuluh persen bulan ini.",
+    "en_text": "Sales increased by ten percent this month."
+  },
+  {
+    "id": 40,
+    "id_text": "Biaya tetap stabil pada kuartal ini.",
+    "en_text": "Costs remained stable this quarter."
+  },
+  {
+    "id": 41,
+    "id_text": "Strategi ini menunjukkan hasil yang bagus.",
+    "en_text": "This strategy shows great results."
+  },
+  {
+    "id": 42,
+    "id_text": "Izinkan saya menekankan poin-poin penting di sini.",
+    "en_text": "Let me highlight key points here."
+  },
+  {
+    "id": 43,
+    "id_text": "Ini adalah ringkasan dari kemajuan kita.",
+    "en_text": "Here is the summary of our progress."
+  },
+  {
+    "id": 44,
+    "id_text": "Data ini sudah berbicara sendiri.",
+    "en_text": "The data speaks for itself."
+  },
+  {
+    "id": 45,
+    "id_text": "Kami menghadapi sedikit penundaan minggu lalu.",
+    "en_text": "We faced a minor delay last week."
+  },
+  {
+    "id": 46,
+    "id_text": "Tim kami mencapai target dengan mudah.",
+    "en_text": "Our team achieved the target easily."
+  },
+  {
+    "id": 47,
+    "id_text": "Saya ingin menyampaikan tiga pilihan.",
+    "en_text": "I want to present three options."
+  },
+  {
+    "id": 48,
+    "id_text": "Pilihan A paling hemat biaya.",
+    "en_text": "Option A is the most cost-effective."
+  },
+  {
+    "id": 49,
+    "id_text": "Pilihan B menawarkan pengiriman lebih cepat.",
+    "en_text": "Option B offers faster delivery."
+  },
+  {
+    "id": 50,
+    "id_text": "Pilihan C memberikan nilai tertinggi.",
+    "en_text": "Option C brings the highest value."
+  },
+  {
+    "id": 51,
+    "id_text": "Mari kita analisis kelebihan dan kekurangannya.",
+    "en_text": "Let us analyze the pros and cons."
+  },
+  {
+    "id": 52,
+    "id_text": "Saya akan mengirimkan salinan salindia setelah ini.",
+    "en_text": "I will send the slides after this."
+  },
+  {
+    "id": 53,
+    "id_text": "Silakan mengajukan pertanyaan kapan saja.",
+    "en_text": "Feel free to ask questions anytime."
+  },
+  {
+    "id": 54,
+    "id_text": "Sekian presentasi singkat dari saya.",
+    "en_text": "That concludes my short presentation."
+  },
+  {
+    "id": 55,
+    "id_text": "Sekarang giliran Anda untuk berbicara.",
+    "en_text": "Now I turn the floor to you."
+  },
+  {
+    "id": 56,
+    "id_text": "Menurut pendapat saya, ini ide yang bagus.",
+    "en_text": "In my opinion, this is a great idea."
+  },
+  {
+    "id": 57,
+    "id_text": "Dari sudut pandang saya, kita harus melanjutkan.",
+    "en_text": "From my perspective, we should proceed."
+  },
+  {
+    "id": 58,
+    "id_text": "Saya percaya proyek ini akan berhasil.",
+    "en_text": "I believe this project will succeed."
+  },
+  {
+    "id": 59,
+    "id_text": "Saya pikir kita membutuhkan lebih banyak waktu.",
+    "en_text": "I think we need more time."
+  },
+  {
+    "id": 60,
+    "id_text": "Pandangan saya mengenai hal ini cukup sederhana.",
+    "en_text": "My view on this matter is simple."
+  },
+  {
+    "id": 61,
+    "id_text": "Saya merasa kita berada di jalur yang benar.",
+    "en_text": "I feel we are on the right track."
+  },
+  {
+    "id": 62,
+    "id_text": "Pendekatan ini masuk akal bagi saya.",
+    "en_text": "This approach makes sense to me."
+  },
+  {
+    "id": 63,
+    "id_text": "Saya sangat merekomendasikan solusi ini.",
+    "en_text": "I strongly recommend this solution."
+  },
+  {
+    "id": 64,
+    "id_text": "Kita harus mempertimbangkan masukan pengguna.",
+    "en_text": "We should consider user feedback."
+  },
+  {
+    "id": 65,
+    "id_text": "Kualitas harus menjadi prioritas utama kita.",
+    "en_text": "Quality should be our top priority."
+  },
+  {
+    "id": 66,
+    "id_text": "Saya melihat potensi pertumbuhan besar di sini.",
+    "en_text": "I see great growth potential here."
+  },
+  {
+    "id": 67,
+    "id_text": "Kita harus bertindak cepat dalam hal ini.",
+    "en_text": "We need to act quickly on this."
+  },
+  {
+    "id": 68,
+    "id_text": "Keselamatan adalah yang utama dalam proses ini.",
+    "en_text": "Safety comes first in this process."
+  },
+  {
+    "id": 69,
+    "id_text": "Saya punya kekhawatiran tentang tenggat waktu.",
+    "en_text": "I have a concern about the timeline."
+  },
+  {
+    "id": 70,
+    "id_text": "Risiko ini sepertinya bisa diatasi.",
+    "en_text": "This risk seems manageable."
+  },
+  {
+    "id": 71,
+    "id_text": "Saya lebih menyukai proposal pertama.",
+    "en_text": "I prefer the first proposal."
+  },
+  {
+    "id": 72,
+    "id_text": "Kita membutuhkan pendekatan yang lebih praktis.",
+    "en_text": "We need a more practical approach."
+  },
+  {
+    "id": 73,
+    "id_text": "Inovasi adalah kunci keberhasilan kita.",
+    "en_text": "Innovation is key to our success."
+  },
+  {
+    "id": 74,
+    "id_text": "Saya mendukung keputusan ini.",
+    "en_text": "I stand by this decision."
+  },
+  {
+    "id": 75,
+    "id_text": "Mari kita lihat gambaran yang lebih luas.",
+    "en_text": "Let us look at the bigger picture."
+  },
+  {
+    "id": 76,
+    "id_text": "Saya sepenuhnya setuju dengan Anda.",
+    "en_text": "I completely agree with you."
+  },
+  {
+    "id": 77,
+    "id_text": "Poin Anda sangat masuk akal.",
+    "en_text": "You make a valid point."
+  },
+  {
+    "id": 78,
+    "id_text": "Itu terdengar seperti rencana yang matang.",
+    "en_text": "That sounds like a solid plan."
+  },
+  {
+    "id": 79,
+    "id_text": "Saya sependapat dengan Anda tentang hal ini.",
+    "en_text": "I share your view on this."
+  },
+  {
+    "id": 80,
+    "id_text": "Tepat seperti apa yang saya pikirkan.",
+    "en_text": "Exactly what I was thinking."
+  },
+  {
+    "id": 81,
+    "id_text": "Saya tidak punya keberatan tentang hal itu.",
+    "en_text": "I have no objections to that."
+  },
+  {
+    "id": 82,
+    "id_text": "Itu sangat masuk akal.",
+    "en_text": "That makes complete sense."
+  },
+  {
+    "id": 83,
+    "id_text": "Saya mendukung ide ini.",
+    "en_text": "I am on board with this idea."
+  },
+  {
+    "id": 84,
+    "id_text": "Saya paham maksud Anda dengan jelas.",
+    "en_text": "I see your point clearly."
+  },
+  {
+    "id": 85,
+    "id_text": "Saya setuju sampai batas tertentu.",
+    "en_text": "I agree up to a point."
+  },
+  {
+    "id": 86,
+    "id_text": "Saya melihatnya secara berbeda.",
+    "en_text": "I see it differently."
+  },
+  {
+    "id": 87,
+    "id_text": "Dengan segala hormat, saya kurang setuju.",
+    "en_text": "I respectfully disagree with that."
+  },
+  {
+    "id": 88,
+    "id_text": "Saya memahami pandangan Anda, namun saya tidak setuju.",
+    "en_text": "I understand your view, but I disagree."
+  },
+  {
+    "id": 89,
+    "id_text": "Itu mungkin terlalu berisiko bagi kita.",
+    "en_text": "That might be too risky for us."
+  },
+  {
+    "id": 90,
+    "id_text": "Saya memiliki beberapa keraguan tentang rencana itu.",
+    "en_text": "I have some doubts about that plan."
+  },
+  {
+    "id": 91,
+    "id_text": "Mari kita pikirkan kembali pendekatan ini.",
+    "en_text": "Let us rethink this approach."
+  },
+  {
+    "id": 92,
+    "id_text": "Apakah Anda yakin dengan angka-angka ini?",
+    "en_text": "Are you sure about these figures?"
+  },
+  {
+    "id": 93,
+    "id_text": "Saya khawatir kita kekurangan anggaran.",
+    "en_text": "I fear we lack sufficient budget."
+  },
+  {
+    "id": 94,
+    "id_text": "Pilihan itu terlalu mahal.",
+    "en_text": "That option is too expensive."
+  },
+  {
+    "id": 95,
+    "id_text": "Kita harus menemukan jalan tengah.",
+    "en_text": "We need to find a compromise."
+  },
+  {
+    "id": 96,
+    "id_text": "Bisakah Anda memperjelas poin itu?",
+    "en_text": "Could you clarify that point?"
+  },
+  {
+    "id": 97,
+    "id_text": "Apa yang Anda maksud dengan itu?",
+    "en_text": "What do you mean by that?"
+  },
+  {
+    "id": 98,
+    "id_text": "Bisakah Anda mengulangi kalimat terakhir?",
+    "en_text": "Could you repeat the last sentence?"
+  },
+  {
+    "id": 99,
+    "id_text": "Apakah ada pertanyaan sejauh ini?",
+    "en_text": "Do you have any questions so far?"
+  },
+  {
+    "id": 100,
+    "id_text": "Apakah ada yang ingin menambahkan sesuatu?",
+    "en_text": "Does anyone want to add anything?"
+  },
+  {
+    "id": 101,
+    "id_text": "Bisakah Anda memberi kami sebuah contoh?",
+    "en_text": "Could you give us an example?"
+  },
+  {
+    "id": 102,
+    "id_text": "Apa pendapat Anda tentang hal ini?",
+    "en_text": "What is your opinion on this?"
+  },
+  {
+    "id": 103,
+    "id_text": "Bagaimana ini akan mempengaruhi jadwal kita?",
+    "en_text": "How will this affect our schedule?"
+  },
+  {
+    "id": 104,
+    "id_text": "Berapa total perkiraan biayanya?",
+    "en_text": "What are the total projected costs?"
+  },
+  {
+    "id": 105,
+    "id_text": "Siapa yang bertanggung jawab atas tugas ini?",
+    "en_text": "Who is responsible for this task?"
+  },
+  {
+    "id": 106,
+    "id_text": "Kapan tenggat waktu untuk ini?",
+    "en_text": "When is the deadline for this?"
+  },
+  {
+    "id": 107,
+    "id_text": "Bisakah kita mendapatkan rincian lebih lanjut?",
+    "en_text": "Can we get more details on this?"
+  },
+  {
+    "id": 108,
+    "id_text": "Di mana saya bisa menemukan laporan itu?",
+    "en_text": "Where can I find that report?"
+  },
+  {
+    "id": 109,
+    "id_text": "Apa rencana cadangan kita?",
+    "en_text": "What is our plan B?"
+  },
+  {
+    "id": 110,
+    "id_text": "Seberapa cepat kita bisa memulai ini?",
+    "en_text": "How soon can we start this?"
+  },
+  {
+    "id": 111,
+    "id_text": "Apakah ada risiko tersembunyi?",
+    "en_text": "Are there any hidden risks?"
+  },
+  {
+    "id": 112,
+    "id_text": "Siapa yang akan memimpin inisiatif ini?",
+    "en_text": "Who will lead this initiative?"
+  },
+  {
+    "id": 113,
+    "id_text": "Bisakah Anda mengirimkan tautannya kepada saya?",
+    "en_text": "Could you send me the link?"
+  },
+  {
+    "id": 114,
+    "id_text": "Apakah penjelasan saya cukup jelas?",
+    "en_text": "Am I making myself clear?"
+  },
+  {
+    "id": 115,
+    "id_text": "Apa langkah selanjutnya di sini?",
+    "en_text": "What are the next steps here?"
+  },
+  {
+    "id": 116,
+    "id_text": "Saya sarankan kita menjadwalkan panggilan lanjutan.",
+    "en_text": "I suggest we schedule a follow-up call."
+  },
+  {
+    "id": 117,
+    "id_text": "Mengapa kita tidak mengujinya terlebih dahulu?",
+    "en_text": "Why don't we test this first?"
+  },
+  {
+    "id": 118,
+    "id_text": "Bagaimana jika kita membagi beban kerja?",
+    "en_text": "How about we split the workload?"
+  },
+  {
+    "id": 119,
+    "id_text": "Kita bisa menyewa konsultan untuk hal ini.",
+    "en_text": "We could hire a consultant for this."
+  },
+  {
+    "id": 120,
+    "id_text": "Saya mengajukan tenggat waktu baru.",
+    "en_text": "I propose a new timeline."
+  },
+  {
+    "id": 121,
+    "id_text": "Mari kita bentuk tim khusus.",
+    "en_text": "Let us form a dedicated team."
+  },
+  {
+    "id": 122,
+    "id_text": "Kita sebaiknya mengotomatiskan proses ini.",
+    "en_text": "We should automate this process."
+  },
+  {
+    "id": 123,
+    "id_text": "Mengapa tidak meminta masukan dari pelanggan?",
+    "en_text": "Why not ask for customer feedback?"
+  },
+  {
+    "id": 124,
+    "id_text": "Saya menyarankan untuk mengurangi biaya operasional.",
+    "en_text": "I recommend reducing operational costs."
+  },
+  {
+    "id": 125,
+    "id_text": "Mari kita tinjau kontrak ini dengan saksama.",
+    "en_text": "Let us review the contract carefully."
+  },
+  {
+    "id": 126,
+    "id_text": "Kita harus memperbarui perangkat lunak kita.",
+    "en_text": "We ought to upgrade our software."
+  },
+  {
+    "id": 127,
+    "id_text": "Mari kita tunda tanggal peluncuran.",
+    "en_text": "Let us delay the launch date."
+  },
+  {
+    "id": 128,
+    "id_text": "Saya usul kita melakukan pemungutan suara.",
+    "en_text": "I propose we vote on this."
+  },
+  {
+    "id": 129,
+    "id_text": "Mari kita bertukar pikiran mencari solusi baru.",
+    "en_text": "Let us brainstorm new solutions."
+  },
+  {
+    "id": 130,
+    "id_text": "Kita harus melakukan riset pasar.",
+    "en_text": "We should conduct market research."
+  },
+  {
+    "id": 131,
+    "id_text": "Bagaimana jika memperpanjang tenggat waktu?",
+    "en_text": "How about extending the deadline?"
+  },
+  {
+    "id": 132,
+    "id_text": "Mari kita gabungkan kedua ide tersebut.",
+    "en_text": "Let us combine both ideas."
+  },
+  {
+    "id": 133,
+    "id_text": "Kita harus mengoptimalkan alur kerja kita.",
+    "en_text": "We must optimize our workflow."
+  },
+  {
+    "id": 134,
+    "id_text": "Mari kita tetapkan target mingguan yang jelas.",
+    "en_text": "Let us set clear weekly goals."
+  },
+  {
+    "id": 135,
+    "id_text": "Saya sarankan mengadakan pemungutan suara singkat.",
+    "en_text": "I suggest taking a short vote."
+  },
+  {
+    "id": 136,
+    "id_text": "Boleh saya menyela sebentar?",
+    "en_text": "May I interrupt for a moment?"
+  },
+  {
+    "id": 137,
+    "id_text": "Maaf telah memotong pembicaraan Anda.",
+    "en_text": "Sorry to cut you off."
+  },
+  {
+    "id": 138,
+    "id_text": "Silakan lanjutkan poin Anda.",
+    "en_text": "Please go ahead with your point."
+  },
+  {
+    "id": 139,
+    "id_text": "Biarkan dia menyelesaikan pernyataannya terlebih dahulu.",
+    "en_text": "Let him finish his statement first."
+  },
+  {
+    "id": 140,
+    "id_text": "Kita kehabisan waktu.",
+    "en_text": "We are running out of time."
+  },
+  {
+    "id": 141,
+    "id_text": "Kita harus tetap pada topik.",
+    "en_text": "We need to stay on topic."
+  },
+  {
+    "id": 142,
+    "id_text": "Mari kita simpan topik ini untuk sementara.",
+    "en_text": "Let us park this topic for now."
+  },
+  {
+    "id": 143,
+    "id_text": "Bisakah kita kembali ke pembahasan utama?",
+    "en_text": "Can we get back to business?"
+  },
+  {
+    "id": 144,
+    "id_text": "Harap simpan pertanyaan Anda hingga akhir.",
+    "en_text": "Please hold your questions until the end."
+  },
+  {
+    "id": 145,
+    "id_text": "Mari kita tetap fokus pada agenda.",
+    "en_text": "Let us stay focused on the agenda."
+  },
+  {
+    "id": 146,
+    "id_text": "Bicara bergantian satu per satu.",
+    "en_text": "One person speaking at a time."
+  },
+  {
+    "id": 147,
+    "id_text": "Mari kita hindari pembicaraan di luar topik.",
+    "en_text": "Let us avoid side conversations."
+  },
+  {
+    "id": 148,
+    "id_text": "Kita harus segera menyelesaikan bagian ini.",
+    "en_text": "We need to wrap this up soon."
+  },
+  {
+    "id": 149,
+    "id_text": "Mari kita istirahat lima menit.",
+    "en_text": "Let us take a five-minute break."
+  },
+  {
+    "id": 150,
+    "id_text": "Selamat datang kembali dari istirahat.",
+    "en_text": "Welcome back from the break."
+  },
+  {
+    "id": 151,
+    "id_text": "Kami menerima penawaran yang Anda ajukan.",
+    "en_text": "We accept your proposed offer."
+  },
+  {
+    "id": 152,
+    "id_text": "Apakah harga ini masih bisa dinegosiasikan?",
+    "en_text": "Is this price open for negotiation?"
+  },
+  {
+    "id": 153,
+    "id_text": "Kami dapat memberikan diskon sepuluh persen.",
+    "en_text": "We can offer a ten percent discount."
+  },
+  {
+    "id": 154,
+    "id_text": "Harga itu melebihi anggaran awal kami.",
+    "en_text": "That price exceeds our initial budget."
+  },
+  {
+    "id": 155,
+    "id_text": "Bisakah Anda memberi jalan tengah soal harga?",
+    "en_text": "Can you meet us halfway on price?"
+  },
+  {
+    "id": 156,
+    "id_text": "Kami membutuhkan kontrak jangka panjang.",
+    "en_text": "We need a long-term contract."
+  },
+  {
+    "id": 157,
+    "id_text": "Syarat pembayaran harus jelas.",
+    "en_text": "Terms of payment must be clear."
+  },
+  {
+    "id": 158,
+    "id_text": "Kami menyetujui semua ketentuan Anda.",
+    "en_text": "We agree to all your terms."
+  },
+  {
+    "id": 159,
+    "id_text": "Kita perlu merevisi kesepakatan tersebut.",
+    "en_text": "We need to revise the agreement."
+  },
+  {
+    "id": 160,
+    "id_text": "Apakah masa garansi sudah termasuk?",
+    "en_text": "Is the warranty period included?"
+  },
+  {
+    "id": 161,
+    "id_text": "Kami memerlukan jaminan tertulis.",
+    "en_text": "We require a written guarantee."
+  },
+  {
+    "id": 162,
+    "id_text": "Mari kita buat draf kontrak resminya.",
+    "en_text": "Let us draft the official contract."
+  },
+  {
+    "id": 163,
+    "id_text": "Kedua belah pihak harus menandatangani dokumen ini.",
+    "en_text": "Both parties must sign this document."
+  },
+  {
+    "id": 164,
+    "id_text": "Kami sangat menghargai kemitraan ini.",
+    "en_text": "We value this partnership greatly."
+  },
+  {
+    "id": 165,
+    "id_text": "Kesepakatan ini menguntungkan kedua pihak.",
+    "en_text": "This deal creates a win-win situation."
+  },
+  {
+    "id": 166,
+    "id_text": "Kami membutuhkan persetujuan akhir dari manajemen.",
+    "en_text": "We need final management approval."
+  },
+  {
+    "id": 167,
+    "id_text": "Tim hukum kami akan meninjau ini.",
+    "en_text": "Our legal team will review this."
+  },
+  {
+    "id": 168,
+    "id_text": "Kami siap menandatangani hari ini.",
+    "en_text": "We are ready to sign today."
+  },
+  {
+    "id": 169,
+    "id_text": "Terima kasih atas fleksibilitas Anda.",
+    "en_text": "Thank you for your flexibility."
+  },
+  {
+    "id": 170,
+    "id_text": "Kami berharap dapat bekerja sama.",
+    "en_text": "We look forward to working together."
+  },
+  {
+    "id": 171,
+    "id_text": "Siapa yang akan menangani tugas ini?",
+    "en_text": "Who will handle this action item?"
+  },
+  {
+    "id": 172,
+    "id_text": "John akan memimpin tahap proyek ini.",
+    "en_text": "John will lead this project phase."
+  },
+  {
+    "id": 173,
+    "id_text": "Sarah akan membuat draf laporan sebelum hari Jumat.",
+    "en_text": "Sarah will draft the report by Friday."
+  },
+  {
+    "id": 174,
+    "id_text": "Saya akan menindaklanjuti dengan klien.",
+    "en_text": "I will follow up with the client."
+  },
+  {
+    "id": 175,
+    "id_text": "Kami akan mengirimkan catatan rapat melalui email.",
+    "en_text": "We will email the meeting notes."
+  },
+  {
+    "id": 176,
+    "id_text": "Tolong perbarui lembar kerja tim.",
+    "en_text": "Please update the team spreadsheet."
+  },
+  {
+    "id": 177,
+    "id_text": "Tetapkan tenggat waktu untuk hari Selasa depan.",
+    "en_text": "Set a deadline for next Tuesday."
+  },
+  {
+    "id": 178,
+    "id_text": "Saya akan mengonfirmasi lokasi rapat.",
+    "en_text": "I will confirm the meeting location."
+  },
+  {
+    "id": 179,
+    "id_text": "Harap kumpulkan masukan Anda besok.",
+    "en_text": "Please submit your feedback tomorrow."
+  },
+  {
+    "id": 180,
+    "id_text": "Kami membutuhkan laporan kemajuan mingguan.",
+    "en_text": "We need progress reports weekly."
+  },
+  {
+    "id": 181,
+    "id_text": "Siapa yang memantau hasil kerja ini?",
+    "en_text": "Who is tracking these deliverables?"
+  },
+  {
+    "id": 182,
+    "id_text": "Saya akan berkoordinasi dengan tim IT.",
+    "en_text": "I will coordinate with IT team."
+  },
+  {
+    "id": 183,
+    "id_text": "Pastikan untuk mencatat semua perubahan.",
+    "en_text": "Make sure to document all changes."
+  },
+  {
+    "id": 184,
+    "id_text": "Saya akan menjadwalkan peninjauan kita berikutnya.",
+    "en_text": "I will schedule our next check-in."
+  },
+  {
+    "id": 185,
+    "id_text": "Kirimkan file terbarui kepada saya hari ini.",
+    "en_text": "Send me the updated file today."
+  },
+  {
+    "id": 186,
+    "id_text": "Mari kita rangkum keputusan kita hari ini.",
+    "en_text": "Let us summarize our decisions today."
+  },
+  {
+    "id": 187,
+    "id_text": "Kita telah membahas banyak hal hari ini.",
+    "en_text": "We covered a lot of ground today."
+  },
+  {
+    "id": 188,
+    "id_text": "Semuanya sudah jelas bagi semua orang sekarang.",
+    "en_text": "Everything is clear for everyone now."
+  },
+  {
+    "id": 189,
+    "id_text": "Terima kasih atas masukan berharga Anda.",
+    "en_text": "Thank you for your valuable input."
+  },
+  {
+    "id": 190,
+    "id_text": "Kerja luar biasa dalam rapat hari ini.",
+    "en_text": "Excellent work on this meeting today."
+  },
+  {
+    "id": 191,
+    "id_text": "Kita berhasil mencapai tujuan kita hari ini.",
+    "en_text": "We accomplished our goals today."
+  },
+  {
+    "id": 192,
+    "id_text": "Rapat kita berikutnya adalah Senin depan.",
+    "en_text": "Our next meeting is next Monday."
+  },
+  {
+    "id": 193,
+    "id_text": "Saya akan segera mengirimkan email ringkasan.",
+    "en_text": "I will send a summary email soon."
+  },
+  {
+    "id": 194,
+    "id_text": "Jika Anda memiliki pertanyaan, kirim email ke saya.",
+    "en_text": "If you have questions, email me."
+  },
+  {
+    "id": 195,
+    "id_text": "Terima kasih atas partisipasi aktif Anda.",
+    "en_text": "Thanks for your active participation."
+  },
+  {
+    "id": 196,
+    "id_text": "Kita selesai sepuluh menit lebih awal.",
+    "en_text": "We are finishing ten minutes early."
+  },
+  {
+    "id": 197,
+    "id_text": "Selamat menikmati sisa hari Anda.",
+    "en_text": "Enjoy the rest of your day."
+  },
+  {
+    "id": 198,
+    "id_text": "Semoga minggu Anda produktif ke depannya.",
+    "en_text": "Have a productive week ahead."
+  },
+  {
+    "id": 199,
+    "id_text": "Rapat resmi ditutup.",
+    "en_text": "The meeting is now adjourned."
+  },
+  {
+    "id": 200,
+    "id_text": "Sampai jumpa pada rapat berikutnya.",
+    "en_text": "See you all at the next meeting."
+  }
+];
+
+    let currentIndex = 0;
+    let isTranslated = false;
+
+    const counterEl = document.getElementById("card-counter");
+    const percentEl = document.getElementById("percent-indicator");
+    const progressFillEl = document.getElementById("progress-fill");
+    const tagEl = document.getElementById("card-tag");
+    const textIdEl = document.getElementById("text-id");
+    const textEnEl = document.getElementById("text-en");
+    const placeholderEl = document.getElementById("text-placeholder");
+    const audioBtnEl = document.getElementById("audio-btn");
+    const translateBtnEl = document.getElementById("translate-btn");
+    const prevBtnEl = document.getElementById("prev-btn");
+
+    function updateCard() {
+      const current = sentences[currentIndex];
+      tagEl.textContent = "Kalimat #" + current.id;
+      counterEl.textContent = (currentIndex + 1);
+      
+      const percent = Math.round(((currentIndex + 1) / sentences.length) * 100);
+      percentEl.textContent = percent + "%";
+      progressFillEl.style.width = percent + "%";
+
+      textIdEl.textContent = current.id_text;
+      textEnEl.textContent = current.en_text;
+
+      // Reset translation state
+      isTranslated = false;
+      textEnEl.style.display = "none";
+      audioBtnEl.style.display = "none";
+      placeholderEl.style.display = "block";
+      translateBtnEl.style.display = "block";
+      translateBtnEl.textContent = "Terjemahkan";
+
+      prevBtnEl.disabled = currentIndex === 0;
+      prevBtnEl.style.opacity = currentIndex === 0 ? "0.4" : "1";
+    }
+
+    function showTranslation() {
+      if (!isTranslated) {
+        isTranslated = true;
+        placeholderEl.style.display = "none";
+        textEnEl.style.display = "block";
+        audioBtnEl.style.display = "inline-flex";
+        translateBtnEl.textContent = "Sudah Diterjemahkan";
+        translateBtnEl.style.backgroundColor = "#10b981";
+      }
+    }
+
+    function nextCard() {
+      if (currentIndex < sentences.length - 1) {
+        currentIndex++;
+      } else {
+        currentIndex = 0; // Loop kembali ke awal
+      }
+      translateBtnEl.style.backgroundColor = "var(--primary)";
+      updateCard();
+    }
+
+    function prevCard() {
+      if (currentIndex > 0) {
+        currentIndex--;
+        translateBtnEl.style.backgroundColor = "var(--primary)";
+        updateCard();
+      }
+    }
+
+    function shuffleCards() {
+      for (let i = sentences.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [sentences[i], sentences[j]] = [sentences[j], sentences[i]];
+      }
+      currentIndex = 0;
+      translateBtnEl.style.backgroundColor = "var(--primary)";
+      updateCard();
+    }
+
+    function playAudio() {
+      if ("speechSynthesis" in window) {
+        const utterance = new SpeechSynthesisUtterance(sentences[currentIndex].en_text);
+        utterance.lang = "en-US";
+        utterance.rate = 0.9;
+        window.speechSynthesis.speak(utterance);
+      }
+    }
+
+    // Dukungan navigasi keyboard (desktop/laptop)
+    document.addEventListener("keydown", function(e) {
+      if (e.code === "Space") {
+        e.preventDefault();
+        showTranslation();
+      } else if (e.code === "ArrowRight") {
+        nextCard();
+      } else if (e.code === "ArrowLeft") {
+        prevCard();
+      }
+    });
+
+    // Swipe gesture support on smartphone
+    let touchstartX = 0;
+    let touchendX = 0;
+    const cardEl = document.getElementById("card");
+
+    cardEl.addEventListener("touchstart", function(e) {
+      touchstartX = e.changedTouches[0].screenX;
+    }, false);
+
+    cardEl.addEventListener("touchend", function(e) {
+      touchendX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }, false);
+
+    function handleSwipe() {
+      if (touchendX < touchstartX - 50) {
+        nextCard(); // Geser ke kiri untuk Next
+      }
+      if (touchendX > touchstartX + 50) {
+        prevCard(); // Geser ke kanan untuk Prev
+      }
+    }
+
+    // Inisialisasi awal
+    updateCard();
+  </script>
+</body>
+</html>
